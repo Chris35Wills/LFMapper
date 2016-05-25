@@ -1,8 +1,5 @@
 import sys
-
-sys.path.append('../')
 from crevassemap import raster_functions, spacing, image_step_clean
-import raster_functions
 
 def check_odd_step(val):
 	try:
@@ -18,8 +15,8 @@ def check_odd_kernel(val):
 		sys.exit("Kernel dimension must be odd")	
 
 ### DATA SPEC
-envi_file_name = '../TESTS/TEST_DATA/helheim_hyperspec_subset.bin'
-output_dir = '../TESTS/test_output/'
+envi_file_name = 'tests/TEST_DATA/helheim_hyperspec_subset.bin'
+output_dir = 'tests/test_output/'
 expect_cols = 1000.
 expect_rows = 1000.
 

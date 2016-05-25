@@ -4,11 +4,6 @@ import matplotlib.pyplot as plt
 from matplotlib import cm
 import scipy.misc
 
-import sys
-sys.path.append("../")
-sys.path.append("./smoothfft")
-sys.path.append("./imported_from_functions")
-
 import util
 import raster_functions
 

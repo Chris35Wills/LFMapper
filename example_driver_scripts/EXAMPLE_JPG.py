@@ -1,8 +1,5 @@
 import sys
-
-sys.path.append('../')
-from crevassemap import raster_functions, spacing, image_step_clean
-import raster_functions
+from ..crevassemap import raster_functions, spacing, image_step_clean
 
 def check_odd_step(val):
 	try:
@@ -18,8 +15,8 @@ def check_odd_kernel(val):
 		sys.exit("Kernel dimension must be odd")	
 
 ### DATA SPEC
-non_envi_file_name = '../TESTS/TEST_DATA/zebra.jpg'
-output_dir = '../TESTS/test_output/'
+non_envi_file_name = 'tests/TEST_DATA/zebra.jpg'
+output_dir = 'tests/test_output/'
 non_envi_cols = 518
 non_envi_rows = 386
 non_envi_post = 1		

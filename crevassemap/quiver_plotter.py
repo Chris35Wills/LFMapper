@@ -6,12 +6,8 @@ import numpy as np
 from osgeo import gdal, gdalconst # for reading in raster
 from osgeo.gdalconst import * # for reading in raster
 
-#sys.path.insert(0, '/home/staff/ggwillc/Desktop/Python_scripts/functions') 
-# should be local
 import raster_functions 
 import util
-reload(raster_functions)
-reload(util)
 
 
 def quiver_plotter(orientation_binary, spacing_binary, opath, plot_title):

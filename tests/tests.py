@@ -60,8 +60,6 @@ def test_nonstandard_imports():
 
 def test_bespoke_imports():
 	### these are bespoke to this program
-	sys.path.append("../")
-	sys.path.append("./smoothfft")
 		
 	try:
 		import util 
@@ -87,8 +85,6 @@ def test_bespoke_imports():
 
 ##### Main Tests
 
-import sys
-sys.path.append('../')
 from crevassemap import raster_functions, spacing, image_step_clean
 
 def test_full_run_ENVI():
