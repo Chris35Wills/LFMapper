@@ -1,4 +1,4 @@
-*.pyc
+**/*.pyc
 **/TESTS/test_output/
 **/TESTS/BIG_DATA/
 **/TESTS/BIG_DATA_OUTPUT/
