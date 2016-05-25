@@ -128,7 +128,7 @@ The following packages are required on your machine:
 
 If they aren't available and you are using [anaconda](https://www.continuum.io/downloads), these can be installed as:
 
-	conda install numpy matplotlib scipy --dry-run
+	conda install numpy matplotlib scipy
 
 [osgeo](https://pypi.python.org/pypi/GDAL/) cannot be installed using `conda install` - see [here for info on its installation](https://pypi.python.org/pypi/GDAL/).
 
