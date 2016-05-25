@@ -1,5 +1,5 @@
 import sys
-from ..crevassemap import raster_functions, spacing, image_step_clean
+from crevassemap import raster_functions, spacing, image_step_clean
 
 def check_odd_step(val):
 	try:

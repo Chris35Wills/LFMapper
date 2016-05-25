@@ -4,7 +4,11 @@
 
 1. Ensure that you have all of the packages available and visible to python listed [here](#dependencies-and-other-details);
 2. Use nosetools to run [tests.py](./tests/tests.py) to make sure everything runs on your machine - this can be run from the top directory;
-3. Run one of the driver scripts located [here](./example_driver_scripts) - these are basic examples of how to calculate spacing and orientation of images using various step and kernel sizes;
+3. Run one of the driver scripts (for either [ENVI](./EXAMPLE_ENVI.py) and [JPG](./EXAMPLE_JPG.py) file types) - these are basic examples of how to calculate spacing and orientation of images using various step and kernel sizes - the outputs will be available in [tests/test_output](tests/test_output) in a folder with either ENVI or JPG along with ENVI or JPG in the name
+
+	python EXAMPLE_ENVI.py
+	python EXAMPLE_JPG.py
+
 4. For more info on exactly how the program works, keep reading...
 
 ## About
@@ -74,13 +78,13 @@ There is a BETA program that can calculate and plot these data - please post an 
 
 ## Program structure and basic use
 
-The core functionality of the program is bundled into the [crevassemap module](./crevassemap) with example driver scripts stored in [example_driver_scripts](./example_driver_scripts). The program flow can be viewed simply as:
+The core functionality of the program is bundled into the [crevassemap module](./crevassemap) with example driver scripts for working with [ENVI](./EXAMPLE_ENVI.py) and [JPG](./EXAMPLE_JPG.py) files available. The program flow can be viewed simply as:
 
 <img src="./images/flow_diagram.png" width="350px" />
 
 Each example driver script simply denotes the input file to use, the window size and step size to implement and the output directory to write to. These scripts are not developed in a fully modular fashion as the program has been designed for experimental purposes. The current structure leaves certain settings exposed to enable quick tweaking of details. 
 
-To get an idea of how the program works, data is available for both of the scripts in [example_driver_scripts](./example_driver_scripts), stored at [tests/TEST_DATA/](./tests/TEST_DATA/). This can be run using:
+To get an idea of how the program works, data is available for both example scripts ([ENVI](./EXAMPLE_ENVI.py) and [JPG](./EXAMPLE_JPG.py)), the data for which is stored at [tests/TEST_DATA/](./tests/TEST_DATA/). This can be run using:
 
 	python EXAMPLE_ENVI.py
 
