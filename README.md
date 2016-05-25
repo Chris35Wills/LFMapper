@@ -3,7 +3,7 @@
 ## Usage
 
 1. Ensure that you have all of the packages available and visible to python listed [here](#dependencies-and-other-details);
-2. Use nosetools to run [tests.py](./tests/tests.py) located in [tests/TEST_DATA/](./tests/TEST_DATA/) to make sure everything runs on your machine;
+2. Use nosetools to run [tests.py](./tests/tests.py) located in [/tests](./tests/TEST_DATA/) to make sure everything runs on your machine;
 3. Run one of the driver scripts located [here](./example_driver_scripts) - these are basic examples of how to calculate spacing and orientation of images using various step and kernel sizes;
 4. For more info on exactly how the program works, keep reading...
 
