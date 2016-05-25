@@ -3,7 +3,7 @@
 ## Usage
 
 1. Ensure that you have all of the packages available and visible to python listed [here](#dependencies-and-other-details);
-2. Use nosetools to run [tests.py](./TESTS/tests.py) located in [TESTS/TEST_DATA/](./TESTS/TEST_DATA/) to make sure everything runs on your machine;
+2. Use nosetools to run [tests.py](./tests/tests.py) located in [tests/TEST_DATA/](./tests/TEST_DATA/) to make sure everything runs on your machine;
 3. Run one of the driver scripts located [here](./example_driver_scripts) - these are basic examples of how to calculate spacing and orientation of images using various step and kernel sizes;
 4. For more info on exactly how the program works, keep reading...
 
@@ -80,7 +80,7 @@ The core functionality of the program is bundled into the [crevassemap module](.
 
 Each example driver script simply denotes the input file to use, the window size and step size to implement and the output directory to write to. These scripts are not developed in a fully modular fashion as the program has been designed for experimental purposes. The current structure leaves certain settings exposed to enable quick tweaking of details. 
 
-To get an idea of how the program works, data is available for both of the scripts in [example_driver_scripts](./example_driver_scripts), stored at [TESTS/TEST_DATA/](./TESTS/TEST_DATA/). This can be run using:
+To get an idea of how the program works, data is available for both of the scripts in [example_driver_scripts](./example_driver_scripts), stored at [tests/TEST_DATA/](./tests/TEST_DATA/). This can be run using:
 
 	python EXAMPLE_ENVI.py
 
@@ -115,7 +115,7 @@ Log files:
 
 ## Testing
 
-A suite of [nosetests](http://nose.readthedocs.io/en/latest/) compatible tests are available to ensure that the program compiles and works with ENVI (.bin and .hdr file pairs) and .jpg images, as well as tests for functions that are used throughout the program. These are available at [TESTS/tests.py](./TESTS/tests.py). 
+A suite of [nosetests](http://nose.readthedocs.io/en/latest/) compatible tests are available to ensure that the program compiles and works with ENVI (.bin and .hdr file pairs) and .jpg images, as well as tests for functions that are used throughout the program. These are available at [tests/tests.py](./tests/tests.py). 
 
 ## Dependencies and other details
 
@@ -130,7 +130,7 @@ If they aren't available and you are using [anaconda](https://www.continuum.io/d
 
 	conda install -c osgeo gdal=1.11.4 numpy matplotlib scipy
 
-The functions bespoke to this program are all located in the [crevassemap module](./crevassemap). So long as you run the main driver scripts within the main directory of the program structure, everything should be correctly located. To be sure, run the tests from [TESTS/tests.py](./TESTS/tests.py) prior to a model run to ensure everything is in order.
+The functions bespoke to this program are all located in the [crevassemap module](./crevassemap). So long as you run the main driver scripts within the main directory of the program structure, everything should be correctly located. To be sure, run the tests from [tests/tests.py](./tests/tests.py) prior to a model run to ensure everything is in order.
 
 Various file formats can be used in the program - for geospatial imagery, use either ENVI format binary (.bin) and header (.hdr) pairs or GeoTiff. If you want to analyse .jpg images, these will also work but images won't be georeferenced (as there is no information available with which to achieve this).
 
