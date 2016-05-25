@@ -14,7 +14,7 @@ import more_fft_functions
 import quiver_plotter
 import util
 from smoothfft import smooth
-from imported_from_functions import plots, SnR_function
+import plots, SnR_function
 reload(plots)
 reload(quiver_plotter)
 

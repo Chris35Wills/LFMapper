@@ -7,13 +7,13 @@ Once program goes public, integrate with travis.
 """
 
 # Some test data (and associated dimensions)
-non_envi_file_name = './TEST_DATA/zebra.jpg'
+non_envi_file_name = 'tests/TEST_DATA/zebra.jpg'
 non_envi_cols = 518
 non_envi_rows = 386
 non_envi_post = 1
 
-envi_file_name = './TEST_DATA/helheim_hyperspec_subset.bin'
-output_dir = './test_output/'
+envi_file_name = 'tests/TEST_DATA/helheim_hyperspec_subset.bin'
+output_dir = 'tests/test_output/'
 expect_cols = 1000.
 expect_rows = 1000.
 #expect_post = 
@@ -62,8 +62,7 @@ def test_bespoke_imports():
 	### these are bespoke to this program
 	sys.path.append("../")
 	sys.path.append("./smoothfft")
-	sys.path.append("./imported_from_functions")
-	
+		
 	try:
 		import util 
 		import raster_functions 
@@ -77,7 +76,6 @@ def test_bespoke_imports():
 		print("\nFunctions should be stored in these directories:\n")
 		print("../")
 		print("./smoothfft")
-		print("./imported_from_functions")
 		print("\nThese functions should be present:\n")
 		print("    import util")
 		print("    import raster_functions")
