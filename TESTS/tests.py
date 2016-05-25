@@ -34,27 +34,14 @@ def check_odd_kernel(val):
 ##### Test function imports
 def test_standard_imports():
 	try:
-		import sys
-		import os
 		import numpy
-		import math
 		import matplotlib.pyplot
-		import time
-		import copy
-		import fractions
 	except:
 		print("Standard imports FAILED - you need to install some packages.")
 		print("\nCheck which of these you don't have:\n")
-		print("    import sys")
-		print("    import os")
 		print("    import numpy")
-		print("    import math")
 		print("    import matplotlib.pyplot")
-		print("    import time")
-		print("    import copy")
-		print("    import fractions")
-
-
+	
 def test_nonstandard_imports():
 	try:
 		### these are not often in python distributions
@@ -62,7 +49,6 @@ def test_nonstandard_imports():
 		import scipy.signal
 		import scipy.misc
 		from osgeo import gdal, gdalconst # for reading in raster
-		from osgeo.gdalconst import * # for reading in raster
 	except:
 		print("Non standard imports FAILED - you need to install some packages.")
 		print("\nCheck which of these you don't have:\n")
@@ -70,8 +56,7 @@ def test_nonstandard_imports():
 		print("    import scipy.signal")
 		print("    import scipy.misc")
 		print("    from osgeo import gdal, gdalconst # for reading in raster")
-		print("    from osgeo.gdalconst import * # for reading in raster")
-
+		
 
 def test_bespoke_imports():
 	### these are bespoke to this program
