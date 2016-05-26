@@ -15,7 +15,7 @@
 
 ## About
 
-LFMapper (Linear Feature Mapper) is a program that extracts the mean orientation and spacing of linear features from images using a Fourier Transform approach. It is built using Python v2.7 (not currently v3. compatible) . The program has been developed with images of topography in mind (any brightness type image will work - from digital elevation models (DEMs) to hyperspectral imagery) 
+LFMapper (Linear Feature Mapper) is a program that extracts the mean orientation and spacing of linear features from images using a Fourier Transform approach. It is built using Python v2.7 (not currently v3. compatible) . The program has been developed with images of topography in mind (any brightness type image will work - from digital elevation models (DEMs) to hyperspectral imagery). The proghram has been built in collaboration between [Chris Williams](https://github.com/Chris35Wills) and [Martin O'Leary](https://github.com/mewo2). 
 
 The ultimate output is the ability to quantify additional data from images than was available before - in this case, values for spacing and orientation as displayed in the quiver plot, created using this program, following analysis of the input DEM on the left:
 
@@ -33,19 +33,19 @@ A moving window is iterated over a provided image, each iteration focusing on a 
 
 <img src="./images/01_elev_surface.png" width="300px" />
 
-Using the Fourier Transform functionality provided in Python's [scipy package](http://docs.scipy.org/doc/scipy/reference/fftpack.html), each sub-image is transformed into frequency space to allow an analysis of the various frequency components of the image. 
+Using the Fourier Transform functionality provided in Python's [scipy package](http://docs.scipy.org/doc/scipy/reference/fftpack.html), each sub-image is transformed into frequency space to allow an analysis of the various frequency components of the image: 
 
 <img src="./images/04_rolled_fft_max_size_walk_through_GAUSS_2D_AXIS_FREQ.png" width="300px" />
 
-The frequency space image is smoothed to remove artefacts introduced as a function of the square nature of the image being analysed (see [Moisan et al., 2011](http://www.math-info.univ-paris5.fr/~moisan/papers/2009-11r.pdf) for more details and [this module](https://github.com/mewo2/smoothfft) written by [Martin O'Leary](https://github.com/mewo2)).
+The frequency space image is smoothed to remove artefacts introduced as a function of the square nature of the image being analysed (see [Moisan et al., 2011](http://www.math-info.univ-paris5.fr/~moisan/papers/2009-11r.pdf) for more details and [this module](https://github.com/mewo2/smoothfft) written by [Martin O'Leary](https://github.com/mewo2)):
 
 <img src="./images/05_rolled_fft_max_size_NO_GIBBS_GAUSS_2D_AXIS_FREQ.png" width="300px" />
 
-The image then has noise removed (user set)
+The image then has noise removed (user set):
 
 <img src="./images/06_rolled_fft_max_size_PINK_SMOOTH_GAUSS_2D_AXIS_FREQ.png" width="300px">
 
-and is then converted to log space. 
+and magnitude is then logged: 
 
 <img src="./images/07_rolled_fft_max_size_PINK_SMOOTH_walk_through_300_FRQ_ZOOM___DOUBLE_GAUSS_2D_AXIS_FREQ.png" width="300px">
 
@@ -56,6 +56,8 @@ A zoom of the above image shows the peaks as the red dots:
 The maximum peak in frequency space is then selected, its spacing and orientation being calculated relative to the origin (in this case, the middle) of the frequency space plot). 
 
 New grids are then populated by these spacing and orientation values, each pixel representative of the results of the analysis of one window iteration. If geospatial data are passed in, these output grids are converted to match the initial geospatial extent of the inputs, enabling seamless integration into any geospatial work-flow or modelling application. More information on the outputs can be found below.
+
+## User settings
 
 The program relies on the user setting specific variables. 
 
@@ -121,7 +123,7 @@ Log files:
 
 ## Testing
 
-A suite of [nosetests](http://nose.readthedocs.io/en/latest/) compatible tests are available to ensure that the program compiles and works with ENVI (.bin and .hdr file pairs) and .jpg images, as well as tests for functions that are used throughout the program. These are available at [tests/tests.py](./tests/tests.py). 
+A suite of [nosetests](http://nose.readthedocs.io/en/latest/) compatible tests are available to ensure that the program compiles and works with ENVI (.bin and .hdr file pairs) and .jpg images, as well as tests for functions that are used throughout the program. These are available at [tests/tests.py](./tests/tests.py) and can be run from the top directory of the program by typing `nosetests`.
 
 ## Dependencies and other details
 
