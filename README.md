@@ -13,7 +13,7 @@
 
 4. For more info on exactly how the program works, keep reading...
 
-NB/ This has been tested in Linux and windows environments - nosetests functionality in MAC seems to run into errors still
+NB/ This has been tested in Linux and windows environments - there are problems in MAC environments that are still being worked on (see [Troubleshooting](#troubleshooting)
 
 ## About
 
@@ -143,4 +143,15 @@ If they aren't available and you are using [anaconda](https://www.continuum.io/d
 The functions bespoke to this program are all located in the [crevassemap module](./crevassemap). So long as you run the main driver scripts within the main directory of the program structure, everything should be correctly located. To be sure, run the tests using `nosetests` in the top directory prior to a model run to ensure everything is in order.
 
 Various file formats can be used in the program - for geospatial imagery, use either ENVI format binary (.bin) and header (.hdr) pairs or GeoTiff. If you want to analyse .jpg images, these will also work but images won't be georeferenced (as there is no information available with which to achieve this).
+
+# Troubleshooting
+
+The program has been tested on Linux and Windows, less so on OSX.
+
+A common issue that is arising with MAC is a problem with [osgeo](https://pypi.python.org/pypi/GDAL/). If you do get osgeo related issues, try this (if you are using anaocnda python):
+
+	conda install krb5
+	
+and then re-run the tests using `nosetests` from the top directory. If you have more problems, please log an issue - OSX issues will be resolved in the near future. Feel free to pull request if you have solutions.
+
 
