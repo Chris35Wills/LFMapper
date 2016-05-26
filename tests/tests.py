@@ -5,6 +5,7 @@ Whilst the program remains private, run these with nosetests.
 
 Once program goes public, integrate with travis.
 """
+import sys
 
 # Some test data (and associated dimensions)
 non_envi_file_name = 'tests/TEST_DATA/zebra.jpg'
