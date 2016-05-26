@@ -33,7 +33,7 @@ def check_odd_kernel(val):
 		sys.exit("Kernel dimension must be odd")	
 
 ##### Test function imports
-"""
+
 def test_01_standard_imports():
 	try:
 		import numpy
@@ -93,7 +93,7 @@ def test_98_load_envi_dimensions():
 	if(package_fail==1):
 		sys.exit("Can't test functions until package issues are resolved")
 	
-	elif(package_fail==1):
+	elif(package_fail==0):
 		image_array, post, (geotransform, inDs) = raster_functions.load_envi(envi_file_name)
 	
 		try:
@@ -107,19 +107,18 @@ def test_99_load_envi_post():
 	if(package_fail==1):
 		sys.exit("Can't test functions until package issues are resolved")
 	
-	elif(package_fail==1):
+	elif(package_fail==0):
 		image_array, post, (geotransform, inDs) = raster_functions.load_envi(non_envi_file_name)
 	
 		try:
 			assert post == non_envi_post
 		except AssertionError:
 			sys.exit("ENVI file loading not working properly - observed post different to expected post\n -- check file and path is valid")
-"""
+
 ##### Main Tests
 
 from crevassemap import raster_functions, spacing, image_step_clean
 
-"""
 def test_100_full_run_ENVI():
 
 	if(package_fail==1):
@@ -145,7 +144,6 @@ def test_100_full_run_ENVI():
 
 		except:
 			sys.exit("Main code has broken down using an ENVI file... consider changes since last commit")
-"""
 
 def test_101_full_run_NON_ENVI():
 		
