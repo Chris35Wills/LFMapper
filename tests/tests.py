@@ -118,6 +118,7 @@ def test_99_load_envi_post():
 
 from crevassemap import raster_functions, spacing, image_step_clean
 
+"""
 def test_100_full_run_ENVI():
 
 	if(package_fail==1):
@@ -143,7 +144,7 @@ def test_100_full_run_ENVI():
 
 		except:
 			sys.exit("Main code has broken down using an ENVI file... consider changes since last commit")
-
+"""
 
 def test_101_full_run_NON_ENVI():
 		
