@@ -3,7 +3,7 @@
 ## Usage
 
 1. Ensure that you have all of the packages available and visible to python listed [here](#dependencies-and-other-details);
-2. Use nosetools to run [tests.py](./tests/tests.py) to make sure everything runs on your machine - this can be run from the top directory;
+2. Use nosetests to run [tests.py](./tests/tests.py) to make sure everything runs on your machine - this should be run from the top directory (just type `nosetests`);
 3. Run one of the driver scripts (for either [ENVI](./EXAMPLE_ENVI.py) and [JPG](./EXAMPLE_JPG.py) file types) - these are basic examples of how to calculate spacing and orientation of images using various step and kernel sizes - the outputs will be available in tests/test_output on your machine, in a folder with either ENVI or JPG along with ENVI or JPG in the name. Call the scripts from the top directory using:
 
 	python EXAMPLE_ENVI.py
