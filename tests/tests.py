@@ -17,14 +17,12 @@ envi_file_name = 'tests/TEST_DATA/helheim_hyperspec_subset.bin'
 output_dir = 'tests/test_output'
 expect_cols = 1000.
 expect_rows = 1000.
-#expect_post = 
 
 def check_odd_step(val):
 	try:
 		assert val %2 !=0
 	except AssertionError:
 		sys.exit("Stepsize must be odd")
-
 
 def check_odd_kernel(val):
 	try:
@@ -38,53 +36,38 @@ def test_standard_imports():
 		import numpy
 		import matplotlib.pyplot
 	except:
-		print("Standard imports FAILED - you need to install some packages.")
-		print("\nCheck which of these you don't have:\n")
-		print("    import numpy")
-		print("    import matplotlib.pyplot")
-		sys.exit("")
+		sys.exit("Check you have access to numpy and matplotlib")
 	
-def test_nonstandard_imports():
+def test_scipy_access():
 	try:
-		### these are not often in python distributions
-		from scipy import ndimage
-		import scipy.signal
-		import scipy.misc
-		from osgeo import gdal, gdalconst # for reading in raster
+		import scipy
 	except:
-		print("Non standard imports FAILED - you need to install some packages.")
-		print("\nCheck which of these you don't have:\n")
-		print("    from scipy import ndimage")
-		print("    import scipy.signal")
-		print("    import scipy.misc")
-		print("    from osgeo import gdal, gdalconst # for reading in raster")
-		sys.exit("")	
+		sys.exit("Access to scipy failed - check you have it installed - if using anaconda install using: conda install scipy")
+
+def test_osgeo_access():
+	try:
+		import osgeo	
+	except:
+		sys.exit("osgeo not available - check you have it installed - if using anaconda install using: conda install -c osgeo gdal=1.11.4")
 
 def test_bespoke_imports():
 	### these are bespoke to this program
 		
 	try:
-		import util 
-		import raster_functions 
-		import flatten
-		import FT_spacing_orientation_stats
-		import more_fft_functions
-		import quiver_plotter
-		from smoothfft import smooth
+		from crevassemap import util 
+		from crevassemap import raster_functions 
+		from crevassemap import flatten
+		from crevassemap import FT_spacing_orientation_stats
+		from crevassemap import more_fft_functions
+		from crevassemap import quiver_plotter
 	except:
-		print("Bespoke imports FAILED - you need to install some packages.")
-		print("\nFunctions should be stored in these directories:\n")
-		print("../")
-		print("./smoothfft")
-		print("\nThese functions should be present:\n")
-		print("    import util")
-		print("    import raster_functions")
-		print("    import flatten")
-		print("    import FT_spacing_orientation_stats")
-		print("    import more_fft_functions")
-		print("    import quiver_plotter")
-		print("    from smoothfft import smooth")
-		sys.exit("")
+		sys.exit("Bespoke imports FAILED - check you are in the right directory to import the crevassemap module")
+
+def test_access_smooth():
+	try:
+		from crevassemap.smoothfft import smooth
+	except:
+		sys.exit("smooth function can't be accessed - check access to crevassemap module")	
 
 def test_numpy_nanmean():
 	import numpy as np
@@ -93,9 +76,7 @@ def test_numpy_nanmean():
 	try:
 		np.nanmean(a)
 	except:
-		print("Numpy doesn't have acces to nanmean - need to update numpy to at least version 1.8.0")
-		print("You have numpy version %s installed" %np.version.version)
-		sys.exit("")
+		sys.exit("Numpy doesn't have acces to nanmean - Update Numpy to at least version 1.8.0")
 
 ##### Main Tests
 
@@ -155,8 +136,8 @@ def test_load_envi_dimensions():
 	try:
 		assert image_array.shape[0] == expect_cols
 	except AssertionError:
-		print("ENVI file loading not working properly - array object different size to specified image dimensions\n -- check file and path is valid")
-		sys.exit("")
+		sys.exit("ENVI file loading not working properly - array object different size to specified image dimensions\n -- check file and path is valid")
+		
 
 def test_load_envi_post():
 	
@@ -165,7 +146,5 @@ def test_load_envi_post():
 	try:
 		assert post == non_envi_post
 	except AssertionError:
-		print("ENVI file loading not working properly - observed post different to expected post\n -- check file and path is valid")
-		sys.exit("")
-
-
+		sys.exit("ENVI file loading not working properly - observed post different to expected post\n -- check file and path is valid")
+		
