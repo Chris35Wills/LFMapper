@@ -20,10 +20,10 @@ expect_rows = 1000.
 #expect_post = 
 
 def check_odd_step(val):
-		try:
-			assert val %2 !=0
-		except AssertionError:
-			sys.exit("Stepsize must be odd")
+	try:
+		assert val %2 !=0
+	except AssertionError:
+		sys.exit("Stepsize must be odd")
 
 
 def check_odd_kernel(val):
@@ -42,6 +42,7 @@ def test_standard_imports():
 		print("\nCheck which of these you don't have:\n")
 		print("    import numpy")
 		print("    import matplotlib.pyplot")
+		sys.exit("")
 	
 def test_nonstandard_imports():
 	try:
@@ -57,7 +58,7 @@ def test_nonstandard_imports():
 		print("    import scipy.signal")
 		print("    import scipy.misc")
 		print("    from osgeo import gdal, gdalconst # for reading in raster")
-		
+		sys.exit("")	
 
 def test_bespoke_imports():
 	### these are bespoke to this program
@@ -83,6 +84,7 @@ def test_bespoke_imports():
 		print("    import more_fft_functions")
 		print("    import quiver_plotter")
 		print("    from smoothfft import smooth")
+		sys.exit("")
 
 def test_numpy_nanmean():
 	import numpy as np
@@ -92,7 +94,8 @@ def test_numpy_nanmean():
 		np.nanmean(a)
 	except:
 		print("Numpy doesn't have acces to nanmean - need to update numpy to at least version 1.8.0")
-		
+		sys.exit("")
+
 ##### Main Tests
 
 from crevassemap import raster_functions, spacing, image_step_clean
@@ -140,7 +143,7 @@ def test_full_run_NON_ENVI():
 				spacing.find_spacings(img, date, kernel_size, stepsize, envidata, post, output_dir, spectrum_n)
 
 	except:
-		print("Main code has broken down using a NON-ENVI file... consider changes since last commit")
+		sys.exit("Main code has broken down using a NON-ENVI file... consider changes since last commit")
 
 
 ##### Raster functions test
@@ -152,7 +155,7 @@ def test_load_envi_dimensions():
 		assert image_array.shape[0] == expect_cols
 	except AssertionError:
 		print("ENVI file loading not working properly - array object different size to specified image dimensions\n -- check file and path is valid")
-
+		sys.exit("")
 
 def test_load_envi_post():
 	
@@ -162,31 +165,6 @@ def test_load_envi_post():
 		assert post == non_envi_post
 	except AssertionError:
 		print("ENVI file loading not working properly - observed post different to expected post\n -- check file and path is valid")
+		sys.exit("")
 
 
-"""
-raster_functions (COMPLETE) #~\GitHub\Python_scripts\newstart\crevassemap
-util.check_output_dir() #~\GitHub\Python_scripts\newstart\crevassemap
-
-image_step_clean (COMPLETE - NO IMPORTS) #~\GitHub\Python_scripts\newstart\crevassemap
-
-spacing (YES) #~\GitHub\Python_scripts\newstart\crevassemap
-
-smooth.smooth_fft                           #~\GitHub\Python_scripts\newstart\crevassemap\smoothfft
-flatten.flatten_spectrum 					#~\GitHub\Python_scripts\newstart\crevassemap
-SnR_function.snr                            #~\GitHub\Python_scripts\functions >> ~\GitHub\Python_scripts\newstart\crevassemap\imported_from_functions
-more_fft_functions.border_indent            #~\GitHub\Python_scripts\newstart\crevassemap
-util.check_output_dir						#~\GitHub\Python_scripts\newstart\crevassemap
-plots.plot_image 							#~\GitHub\Python_scripts\functions >> ~\GitHub\Python_scripts\newstart\crevassemap\imported_from_functions
-
-util.check_output_dir 							   #~\GitHub\Python_scripts\newstart\crevassemap
-raster_functions.ENVI_raster_binary_from_2d_array  #~\GitHub\Python_scripts\newstart\crevassemap
-
-util.trim_constant_rows_cols                #~\GitHub\Python_scripts\newstart\crevassemap
-FT_spacing_orientation_stats.write_stats    #~\GitHub\Python_scripts\newstart\crevassemap
-
-quiver_plotter.quiver_plot                  #~\GitHub\Python_scripts\newstart\crevassemap     << imports cleaned up
-
-util.trim_constant_rows_cols            #~\GitHub\Python_scripts\newstart\crevassemap
-raster_functions.load_envi              #~\GitHub\Python_scripts\newstart\crevassemap 
-"""
