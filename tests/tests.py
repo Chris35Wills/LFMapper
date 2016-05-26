@@ -13,7 +13,7 @@ non_envi_rows = 386
 non_envi_post = 1
 
 envi_file_name = 'tests/TEST_DATA/helheim_hyperspec_subset.bin'
-output_dir = 'tests/test_output/'
+output_dir = 'tests/test_output'
 expect_cols = 1000.
 expect_rows = 1000.
 #expect_post = 
