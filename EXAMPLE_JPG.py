@@ -1,4 +1,5 @@
 import sys
+import matplotlib.pyplot as plt
 from crevassemap import raster_functions, spacing, image_step_clean
 
 def check_odd_step(val):
@@ -33,10 +34,15 @@ spectrum_n = 1.5 ## noise value (2 = brown)
 
 image_array, post, envidata = raster_functions.load_envi(non_envi_file_name)
 
+#plot input image
+plt.imshow(image_array)
+plt.title("input JPG")
+plt.show(block=False)
+
 for stepsize in step_range:
 	for kernel_size in kernel_range:
 		img = image_step_clean.image_step_clean(stepsize, image_array)
-		spacing.find_spacings(img, flag, kernel_size, stepsize, envidata, post, output_dir, spectrum_n)
+		spacing.find_spacings(img, flag, kernel_size, stepsize, envidata, post, output_dir, spectrum_n, interact=True)
 
 print("\n JPG EXAMPLE COMPLETE\n")
 print("\n Data saved: %s \n" %output_dir)

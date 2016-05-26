@@ -78,7 +78,7 @@ def find_spacing_at_point(image, x, y, kernel_size, spectrum_n=1.0, show_fft=0):
 
 	return angle, dist_px, snr
 
-def find_spacings(image_array, date, kernel_size, stepsize, envidata, post, output_dir, spectrum_n=1.0):
+def find_spacings(image_array, date, kernel_size, stepsize, envidata, post, output_dir, spectrum_n=1.0, interact=False):
 	'''
 	Main workhorse of the whole FT program - for a provided input image a moving window - of a prior specified 
 	size - is iterated across an FT array of the original image. This returns new arrays representing maximum 
@@ -155,7 +155,7 @@ def find_spacings(image_array, date, kernel_size, stepsize, envidata, post, outp
 
 	plot_title = "%s_winsize_%i_stepsize_%i" %(date, kernel_size, stepsize)
 
-	quiver_plotter.quiver_plot(orientation, space, opath, plot_title, img_prefix + '_quiver')
+	quiver_plotter.quiver_plot(orientation, space, opath, plot_title, img_prefix + '_quiver', interact=interact)
 
 	endTime = time.time()
 	totalTime = endTime - startTime

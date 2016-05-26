@@ -21,7 +21,7 @@ def quiver_plotter(orientation_binary, spacing_binary, opath, plot_title):
 	quiver_plot(orientation, spacing, opath, plot_title)
 
 
-def quiver_plot(orientation, spacing, opath, plot_title, filename):
+def quiver_plot(orientation, spacing, opath, plot_title, filename, interact=False):
 	orientation = util.trim_constant_rows_cols(orientation) #Trim image down so there is no blank border - useful if inputs have had to be resampled
 	spacing = util.trim_constant_rows_cols(spacing) #Trim image down so there is no blank border - useful if inputs have had to be resampled
 	
@@ -77,6 +77,9 @@ def quiver_plot(orientation, spacing, opath, plot_title, filename):
 	plt.gca().xaxis.set_major_locator(plt.NullLocator())
 	plt.gca().yaxis.set_major_locator(plt.NullLocator())
 	#plt.savefig(output, format='png', dpi=300, transparent=True)
+	if interact:
+		plt.title("Quiver plot")
+		plt.show()
 	plt.savefig(filename + '.png', format='png', dpi=300, transparent=True)
 	
 	
