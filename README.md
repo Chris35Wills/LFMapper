@@ -13,7 +13,7 @@
 
 4. For more info on exactly how the program works, keep reading...
 
-*NB/ there are some problems in OS X environments that are still being worked on (see [OS X related issues](#osx-related-issues))*
+*NB/ there are some problems in OS X environments that are still being worked on (see [OS X related issues](#os-x-related-issues))*
 
 ## About
 
