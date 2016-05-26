@@ -17,7 +17,7 @@ def check_odd_kernel(val):
 
 ### DATA SPEC
 non_envi_file_name = 'tests/TEST_DATA/zebra.jpg'
-output_dir = 'tests/test_output/'
+output_dir = 'tests/test_output'
 non_envi_cols = 518
 non_envi_rows = 386
 non_envi_post = 1		
