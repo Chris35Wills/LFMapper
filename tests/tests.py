@@ -18,7 +18,7 @@ output_dir = 'tests/test_output'
 expect_cols = 1000.
 expect_rows = 1000.
 
-pacakge_fail=0
+package_fail=0
 
 def check_odd_step(val):
 	try:
@@ -38,21 +38,21 @@ def test_standard_imports():
 		import numpy
 		import matplotlib.pyplot
 	except:
-		pacakge_fail=1
+		package_fail=1
 		sys.exit("Check you have access to numpy and matplotlib")
 	
 def test_scipy_access():
 	try:
 		import scipy
 	except:
-		pacakge_fail=1
+		package_fail=1
 		sys.exit("Access to scipy failed - check you have it installed - if using anaconda install using: conda install scipy")
 
 def test_osgeo_access():
 	try:
 		import osgeo	
 	except:
-		pacakge_fail=1
+		package_fail=1
 		sys.exit("osgeo not available - check you have it installed - if using anaconda install using: conda install -c osgeo gdal=1.11.4")
 
 def test_bespoke_imports():
@@ -66,14 +66,14 @@ def test_bespoke_imports():
 		from crevassemap import more_fft_functions
 		from crevassemap import quiver_plotter
 	except:
-		pacakge_fail=1
+		package_fail=1
 		sys.exit("Bespoke imports FAILED - check you are in the right directory to import the crevassemap module")
 
 def test_access_smooth():
 	try:
 		from crevassemap.smoothfft import smooth
 	except:
-		pacakge_fail=1
+		package_fail=1
 		sys.exit("smooth function can't be accessed - check access to crevassemap module")	
 
 def test_numpy_nanmean():
@@ -83,7 +83,7 @@ def test_numpy_nanmean():
 	try:
 		np.nanmean(a)
 	except:
-		pacakge_fail=1
+		package_fail=1
 		sys.exit("Numpy doesn't have acces to nanmean - Update Numpy to at least version 1.8.0")
 
 ##### Main Tests
@@ -92,7 +92,7 @@ from crevassemap import raster_functions, spacing, image_step_clean
 
 def test_full_run_ENVI():
 
-	if(pacakge_fail==1):
+	if(package_fail==1):
 		sys.exit("Can't test program until package issues are resolved")
 
 	else:
@@ -119,10 +119,10 @@ def test_full_run_ENVI():
 
 def test_full_run_NON_ENVI():
 		
-	if(pacakge_fail==1):
+	if(package_fail==1):
 		sys.exit("Can't test program until package issues are resolved")
 
-	else:
+	elif(package_fail==1):
 		try:
 			step_range = ([51])
 			kernel_range = ([9])
@@ -147,10 +147,10 @@ def test_full_run_NON_ENVI():
 ##### Raster functions test
 def test_load_envi_dimensions():
 	
-	if(pacakge_fail==1):
+	if(package_fail==1):
 		sys.exit("Can't test functions until package issues are resolved")
 	
-	else:
+	elif(package_fail==1):
 		image_array, post, (geotransform, inDs) = raster_functions.load_envi(envi_file_name)
 	
 		try:
@@ -161,10 +161,10 @@ def test_load_envi_dimensions():
 
 def test_load_envi_post():
 	
-	if(pacakge_fail==1):
+	if(package_fail==1):
 		sys.exit("Can't test functions until package issues are resolved")
 	
-	else:
+	elif(package_fail==1):
 		image_array, post, (geotransform, inDs) = raster_functions.load_envi(non_envi_file_name)
 	
 		try:
