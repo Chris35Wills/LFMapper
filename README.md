@@ -13,6 +13,8 @@
 
 4. For more info on exactly how the program works, keep reading...
 
+NB/ This has been tested in Linux and windows environments - nosetests functionality in MAC seems to run into errors still
+
 ## About
 
 LFMapper (Linear Feature Mapper) is a program that extracts the mean orientation and spacing of linear features from images using a Fourier Transform approach. It is built using Python v2.7 (not currently v3. compatible) . The program has been developed with images of topography in mind (any brightness type image will work - from digital elevation models (DEMs) to hyperspectral imagery). The program has been built in collaboration between [Chris Williams](https://github.com/Chris35Wills) (main program development) and [Martin O'Leary](https://github.com/mewo2) (implementation of convolution, display and interpretation of fourier transform output and smoothing). 
