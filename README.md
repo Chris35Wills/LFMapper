@@ -13,7 +13,7 @@
 
 4. For more info on exactly how the program works, keep reading...
 
-*NB/ This has been tested in Linux and windows environments - there are problems in MAC environments that are still being worked on (see [OSX related issues](#osx-related-issues))*
+*NB/ This has been tested in Linux and windows environments - there are problems in OSX environments that are still being worked on (see [OSX related issues](#osx-related-issues))*
 
 ## About
 
@@ -148,7 +148,7 @@ Various file formats can be used in the program - for geospatial imagery, use ei
 
 The program has been tested on Linux and Windows, less so on OSX.
 
-A common issue that is arising with MAC is a problem with [osgeo](https://pypi.python.org/pypi/GDAL/). If you do get osgeo related issues, try this (if you are using anaocnda python):
+A common issue that is arising with OSX is a problem with [osgeo](https://pypi.python.org/pypi/GDAL/). If you do get osgeo related issues, try this (if you are using anaocnda python):
 
 	conda install krb5
 	
