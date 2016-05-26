@@ -18,6 +18,8 @@ output_dir = 'tests/test_output'
 expect_cols = 1000.
 expect_rows = 1000.
 
+pacakge_fail=0
+
 def check_odd_step(val):
 	try:
 		assert val %2 !=0
@@ -36,18 +38,21 @@ def test_standard_imports():
 		import numpy
 		import matplotlib.pyplot
 	except:
+		pacakge_fail=1
 		sys.exit("Check you have access to numpy and matplotlib")
 	
 def test_scipy_access():
 	try:
 		import scipy
 	except:
+		pacakge_fail=1
 		sys.exit("Access to scipy failed - check you have it installed - if using anaconda install using: conda install scipy")
 
 def test_osgeo_access():
 	try:
 		import osgeo	
 	except:
+		pacakge_fail=1
 		sys.exit("osgeo not available - check you have it installed - if using anaconda install using: conda install -c osgeo gdal=1.11.4")
 
 def test_bespoke_imports():
@@ -61,12 +66,14 @@ def test_bespoke_imports():
 		from crevassemap import more_fft_functions
 		from crevassemap import quiver_plotter
 	except:
+		pacakge_fail=1
 		sys.exit("Bespoke imports FAILED - check you are in the right directory to import the crevassemap module")
 
 def test_access_smooth():
 	try:
 		from crevassemap.smoothfft import smooth
 	except:
+		pacakge_fail=1
 		sys.exit("smooth function can't be accessed - check access to crevassemap module")	
 
 def test_numpy_nanmean():
@@ -76,6 +83,7 @@ def test_numpy_nanmean():
 	try:
 		np.nanmean(a)
 	except:
+		pacakge_fail=1
 		sys.exit("Numpy doesn't have acces to nanmean - Update Numpy to at least version 1.8.0")
 
 ##### Main Tests
@@ -84,67 +92,83 @@ from crevassemap import raster_functions, spacing, image_step_clean
 
 def test_full_run_ENVI():
 
-	try:
-		step_range = ([101])#([3])
-		kernel_range = ([9])#([3])
+	if(pacakge_fail==1):
+		sys.exit("Can't test program until package issues are resolved")
 
-		check_odd_kernel(kernel_range[0])
-		check_odd_step(step_range[0])
+	else:
+		try:
+			step_range = ([101])#([3])
+			kernel_range = ([9])#([3])
 
-		date = "TEST_Helheim"
-		spectrum_n = 1.5 ## noise value (2 = brown)
+			check_odd_kernel(kernel_range[0])
+			check_odd_step(step_range[0])
 
-		image_array, post, envidata = raster_functions.load_envi(envi_file_name)
+			date = "TEST_Helheim"
+			spectrum_n = 1.5 ## noise value (2 = brown)
 
-		for stepsize in step_range:
-			for kernel_size in kernel_range:
-				img = image_step_clean.image_step_clean(stepsize, image_array)
-				spacing.find_spacings(img, date, kernel_size, stepsize, envidata, post, output_dir, spectrum_n)
+			image_array, post, envidata = raster_functions.load_envi(envi_file_name)
 
-	except:
-		sys.exit("Main code has broken down using an ENVI file... consider changes since last commit")
+			for stepsize in step_range:
+				for kernel_size in kernel_range:
+					img = image_step_clean.image_step_clean(stepsize, image_array)
+					spacing.find_spacings(img, date, kernel_size, stepsize, envidata, post, output_dir, spectrum_n)
+
+		except:
+			sys.exit("Main code has broken down using an ENVI file... consider changes since last commit")
 
 
 def test_full_run_NON_ENVI():
 		
-	try:
-		step_range = ([51])
-		kernel_range = ([9])
+	if(pacakge_fail==1):
+		sys.exit("Can't test program until package issues are resolved")
 
-		check_odd_kernel(kernel_range[0])
-		check_odd_step(step_range[0])
+	else:
+		try:
+			step_range = ([51])
+			kernel_range = ([9])
 
-		date = "TEST_zebra"
-		spectrum_n = 1.5 ## noise value (2 = brown)
+			check_odd_kernel(kernel_range[0])
+			check_odd_step(step_range[0])
 
-		image_array, post, envidata = raster_functions.load_envi(non_envi_file_name)
+			date = "TEST_zebra"
+			spectrum_n = 1.5 ## noise value (2 = brown)
 
-		for stepsize in step_range:
-			for kernel_size in kernel_range:
-				img = image_step_clean.image_step_clean(stepsize, image_array)
-				spacing.find_spacings(img, date, kernel_size, stepsize, envidata, post, output_dir, spectrum_n)
+			image_array, post, envidata = raster_functions.load_envi(non_envi_file_name)
 
-	except:
-		sys.exit("Main code has broken down using a NON-ENVI file... consider changes since last commit")
+			for stepsize in step_range:
+				for kernel_size in kernel_range:
+					img = image_step_clean.image_step_clean(stepsize, image_array)
+					spacing.find_spacings(img, date, kernel_size, stepsize, envidata, post, output_dir, spectrum_n)
+
+		except:
+			sys.exit("Main code has broken down using a NON-ENVI file... consider changes since last commit")
 
 
 ##### Raster functions test
 def test_load_envi_dimensions():
 	
-	image_array, post, (geotransform, inDs) = raster_functions.load_envi(envi_file_name)
+	if(pacakge_fail==1):
+		sys.exit("Can't test functions until package issues are resolved")
 	
-	try:
-		assert image_array.shape[0] == expect_cols
-	except AssertionError:
-		sys.exit("ENVI file loading not working properly - array object different size to specified image dimensions\n -- check file and path is valid")
+	else:
+		image_array, post, (geotransform, inDs) = raster_functions.load_envi(envi_file_name)
+	
+		try:
+			assert image_array.shape[0] == expect_cols
+		except AssertionError:
+			sys.exit("ENVI file loading not working properly - array object different size to specified image dimensions\n -- check file and path is valid")
 		
 
 def test_load_envi_post():
 	
-	image_array, post, (geotransform, inDs) = raster_functions.load_envi(non_envi_file_name)
+	if(pacakge_fail==1):
+		sys.exit("Can't test functions until package issues are resolved")
 	
-	try:
-		assert post == non_envi_post
-	except AssertionError:
-		sys.exit("ENVI file loading not working properly - observed post different to expected post\n -- check file and path is valid")
-		
+	else:
+		image_array, post, (geotransform, inDs) = raster_functions.load_envi(non_envi_file_name)
+	
+		try:
+			assert post == non_envi_post
+		except AssertionError:
+			sys.exit("ENVI file loading not working properly - observed post different to expected post\n -- check file and path is valid")
+			
