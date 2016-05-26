@@ -138,7 +138,7 @@ The following packages are required on your machine:
 
 If they aren't available and you are using [anaconda](https://www.continuum.io/downloads), these can be installed as:
 
-	conda install -c osgeo gdal=2.0.0 numpy matplotlib scipy
+	conda install -c osgeo gdal=1.11.2 numpy matplotlib scipy
 
 The functions bespoke to this program are all located in the [crevassemap module](./crevassemap). So long as you run the main driver scripts within the main directory of the program structure, everything should be correctly located. To be sure, run the tests using `nosetests` in the top directory prior to a model run to ensure everything is in order.
 
