@@ -29,13 +29,13 @@ def plot_image(img, title, filename, envidata, post, remove_empty_cols=0):
 	'''
 	util.check_output_dir(filename)
 
-	print("Inside plot image...")
-	print(img.shape)	
+	#print("Inside plot image...")
+	#print(img.shape)	
 	
 	if remove_empty_cols == 1:
 		img = util.trim_constant_rows_cols(img) 
 
-	print(img.shape)
+	#print(img.shape)
 
 	#plt.figure()
 	#plt.title(title)

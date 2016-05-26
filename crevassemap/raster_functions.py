@@ -33,41 +33,41 @@ def ENVI_raster_binary_to_2d_array(file_name):
 		sys.exit("Try again!")
 	else:
 		print "%s opened successfully" %file_name
-			
-		print '~~~~~~~~~~~~~~'
-		print 'Get image size'
-		print '~~~~~~~~~~~~~~'
+		
+		#print '~~~~~~~~~~~~~~'
+		#print 'Get image size'
+		#print '~~~~~~~~~~~~~~'
 		cols = inDs.RasterXSize
 		rows = inDs.RasterYSize
 		bands = inDs.RasterCount
 	
-		print "columns: %i" %cols
-		print "rows: %i" %rows
-		print "bands: %i" %bands
+		#print "columns: %i" %cols
+		#print "rows: %i" %rows
+		#print "bands: %i" %bands
 	
-		print '~~~~~~~~~~~~~~'
-		print 'Get georeference information'
-		print '~~~~~~~~~~~~~~'
+		#print '~~~~~~~~~~~~~~'
+		#print 'Get georeference information'
+		#print '~~~~~~~~~~~~~~'
 		geotransform = inDs.GetGeoTransform()
 		originX = geotransform[0]
 		originY = geotransform[3]
 		pixelWidth = geotransform[1]
 		pixelHeight = geotransform[5]
 	
-		print "origin x: %i" %originX
-		print "origin y: %i" %originY
-		print "width: %2.2f" %pixelWidth
-		print "height: %2.2f" %pixelHeight
+		#print "origin x: %i" %originX
+		#print "origin y: %i" %originY
+		#print "width: %2.2f" %pixelWidth
+		#print "height: %2.2f" %pixelHeight
 	
 		# Set pixel offset.....
-		print '~~~~~~~~~~~~~~' 
-		print 'Convert image to 2D array'
-		print '~~~~~~~~~~~~~~'
+		#print '~~~~~~~~~~~~~~' 
+		#print 'Convert image to 2D array'
+		#print '~~~~~~~~~~~~~~'
 		band = inDs.GetRasterBand(1)
 		image_array = band.ReadAsArray(0, 0, cols, rows)
 		image_array_name = file_name
-		print type(image_array)
-		print image_array.shape
+		#print type(image_array)
+		#print image_array.shape
 		
 		return geotransform, inDs, cols, rows, bands, originX, originY, pixelWidth, pixelHeight, image_array, image_array_name
 
