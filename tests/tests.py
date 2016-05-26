@@ -125,7 +125,7 @@ def test_100_full_run_ENVI():
 	if(package_fail==1):
 		sys.exit("Can't test program until package issues are resolved")
 
-	else:
+	elif(package_fail==0):
 		try:
 			step_range = ([101])#([3])
 			kernel_range = ([9])#([3])
@@ -152,7 +152,7 @@ def test_101_full_run_NON_ENVI():
 	if(package_fail==1):
 		sys.exit("Can't test program until package issues are resolved")
 
-	elif(package_fail==1):
+	elif(package_fail==0):
 		try:
 			step_range = ([51])
 			kernel_range = ([9])
