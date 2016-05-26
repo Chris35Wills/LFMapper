@@ -15,7 +15,7 @@
 
 ## About
 
-LFMapper (Linear Feature Mapper) is a program that extracts the mean orientation and spacing of linear features from images using a Fourier Transform approach. It is completely built in Python (v2.7). The program has been developed with images of topography in mind (any brightness type image will work - from digital elevation models (DEMs) to hyperspectral imagery) 
+LFMapper (Linear Feature Mapper) is a program that extracts the mean orientation and spacing of linear features from images using a Fourier Transform approach. It is built using Python v2.7 (not currently v3. compatible) . The program has been developed with images of topography in mind (any brightness type image will work - from digital elevation models (DEMs) to hyperspectral imagery) 
 
 The ultimate output is the ability to quantify additional data from images than was available before - in this case, values for spacing and orientation as displayed in the quiver plot, created using this program, following analysis of the input DEM on the left:
 
