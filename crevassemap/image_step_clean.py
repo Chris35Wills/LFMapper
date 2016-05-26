@@ -8,7 +8,7 @@ def image_step_clean(stepsize, img):
 	rows, cols = img.shape
 
 	if cols%stepsize != 0 and rows%stepsize != 0 :
-		print "image in x and y must be cleanly divisible by step size... resampling rows and cols"
+		#print "image in x and y must be cleanly divisible by step size... resampling rows and cols"
 		new_cols = stepsize * (cols//stepsize)
 		new_rows = stepsize * (rows//stepsize)
 		new_img = img[0:new_rows, 0:new_cols]
@@ -16,13 +16,13 @@ def image_step_clean(stepsize, img):
 		return new_img
 
 	elif cols%stepsize != 0:
-		print "image in x and y must be cleanly divisible by step size... resampling cols"
+		#print "image in x and y must be cleanly divisible by step size... resampling cols"
 		new_cols = stepsize * (cols//stepsize)
 		img = img[0:rows, 0:new_cols]
 		return img
 
 	elif rows%stepsize != 0:
-		print "image in x and y must be cleanly divisible by step size... resampling rows"
+		#print "image in x and y must be cleanly divisible by step size... resampling rows"
 		new_rows = stepsize * (rows//stepsize)
 		img = img[0:new_rows, 0:cols]
 		return img
