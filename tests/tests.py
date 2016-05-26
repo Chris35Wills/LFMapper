@@ -31,6 +31,17 @@ def check_odd_kernel(val):
 	except AssertionError:
 		sys.exit("Kernel dimension must be odd")	
 
+##### Test python version
+
+def test_python_version(): 
+	
+	try:
+		v = sys.version_info[0] + sys.version_info[1]/10.
+		assert v == 2.7
+	except:
+		sys.exit("Requires python v2.7 to run - you have v%i.%i installed" %(sys.version_info[0], sys.version_info[1]))
+
+
 ##### Test function imports
 
 def test_01_standard_imports():
