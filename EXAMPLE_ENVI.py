@@ -17,7 +17,7 @@ def check_odd_kernel(val):
 
 ### DATA SPEC
 envi_file_name = 'tests/TEST_DATA/helheim_hyperspec_subset.bin'
-output_dir = 'tests/test_output/'
+output_dir = 'tests/test_output'
 expect_cols = 1000.
 expect_rows = 1000.
 
