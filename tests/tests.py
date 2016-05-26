@@ -33,6 +33,7 @@ def check_odd_kernel(val):
 		sys.exit("Kernel dimension must be odd")	
 
 ##### Test function imports
+"""
 def test_01_standard_imports():
 	try:
 		import numpy
@@ -113,7 +114,7 @@ def test_99_load_envi_post():
 			assert post == non_envi_post
 		except AssertionError:
 			sys.exit("ENVI file loading not working properly - observed post different to expected post\n -- check file and path is valid")
-			
+"""
 ##### Main Tests
 
 from crevassemap import raster_functions, spacing, image_step_clean
