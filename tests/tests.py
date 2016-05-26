@@ -84,6 +84,15 @@ def test_bespoke_imports():
 		print("    import quiver_plotter")
 		print("    from smoothfft import smooth")
 
+def test_numpy_nanmean():
+	import numpy as np
+	a=[1,2,3,4]
+	
+	try:
+		np.nanmean(a)
+	except:
+		print("Numpy doesn't have acces to nanmean - need to update numpy to at least version 1.8.0")
+		
 ##### Main Tests
 
 from crevassemap import raster_functions, spacing, image_step_clean
