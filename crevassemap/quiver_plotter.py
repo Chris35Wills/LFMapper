@@ -77,10 +77,12 @@ def quiver_plot(orientation, spacing, opath, plot_title, filename, interact=Fals
 	plt.gca().xaxis.set_major_locator(plt.NullLocator())
 	plt.gca().yaxis.set_major_locator(plt.NullLocator())
 	#plt.savefig(output, format='png', dpi=300, transparent=True)
+	plt.savefig(filename + '.png', format='png', dpi=300, transparent=True)
+	
 	if interact:
 		plt.title("Quiver plot")
 		plt.show()
-	plt.savefig(filename + '.png', format='png', dpi=300, transparent=True)
+	
 	
 	
 
