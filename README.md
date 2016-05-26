@@ -136,7 +136,7 @@ If they aren't available and you are using [anaconda](https://www.continuum.io/d
 
 	conda install -c osgeo gdal=1.11.4 numpy matplotlib scipy
 
-The functions bespoke to this program are all located in the [crevassemap module](./crevassemap). So long as you run the main driver scripts within the main directory of the program structure, everything should be correctly located. To be sure, run the tests from [tests/tests.py](./tests/tests.py) prior to a model run to ensure everything is in order.
+The functions bespoke to this program are all located in the [crevassemap module](./crevassemap). So long as you run the main driver scripts within the main directory of the program structure, everything should be correctly located. To be sure, run the tests using `nosetests` in the top directory prior to a model run to ensure everything is in order.
 
 Various file formats can be used in the program - for geospatial imagery, use either ENVI format binary (.bin) and header (.hdr) pairs or GeoTiff. If you want to analyse .jpg images, these will also work but images won't be georeferenced (as there is no information available with which to achieve this).
 
