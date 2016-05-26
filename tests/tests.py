@@ -92,6 +92,7 @@ def test_numpy_nanmean():
 		np.nanmean(a)
 	except:
 		print("Numpy doesn't have acces to nanmean - need to update numpy to at least version 1.8.0")
+		print("You have numpy version %s installed" %np.version.version)
 		
 ##### Main Tests
 
