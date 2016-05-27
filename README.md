@@ -6,14 +6,16 @@
 
 2. Use nosetests to run [tests.py](./tests/tests.py) to make sure everything runs on your machine - this should be run from the top directory (just type `nosetests`);
 
-3. Run one of the driver scripts (for either [ENVI](./EXAMPLE_ENVI.py) and [JPG](./EXAMPLE_JPG.py) file types) - these are basic examples of how to calculate spacing and orientation of images using various step and kernel sizes - the outputs will be available in tests/test_output on your machine, in a folder with either ENVI or JPG along with ENVI or JPG in the name. Call the scripts from the top directory using:
+3. Run one of the driver scripts (for either [ENVI](./EXAMPLE_ENVI.py) and [JPG](./EXAMPLE_JPG.py) file types\*) - these are basic examples of how to calculate spacing and orientation of images using various step and kernel sizes - the outputs will be available in tests/test_output on your machine, in a folder with either ENVI or JPG along with ENVI or JPG in the name. Call the scripts from the top directory using:
 
 		python EXAMPLE_ENVI.py
 		python EXAMPLE_JPG.py
 
 4. For more info on exactly how the program works, keep reading...
 
-*NB/ there are some problems in OS X environments that are still being worked on (see [OS X related issues](#os-x-related-issues))*
+\* The scripts contain a variable called `interact` - if you set this to True, output images will pop up on screen - this requires you to have x11 forwarding enabled - if not, the script will fail
+
+NB/ there are some problems in OS X environments that are still being worked on (see [OS X related issues](#os-x-related-issues))*
 
 ## About
 
