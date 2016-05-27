@@ -4,16 +4,17 @@
 
 1. Ensure that you have all of the packages available and visible to python listed [here](#dependencies-and-other-details);
 
-2. Use nosetests to run [tests.py](./tests/tests.py) to make sure everything runs on your machine - this should be run from the top directory (just type `nosetests`);
+2. Use nosetests to run [tests.py](./tests/tests.py) to make sure everything runs on your machine - this should be run from the top directory (just type `nosetests`)\*;
 
-3. Run one of the driver scripts (for either [ENVI](./EXAMPLE_ENVI.py) and [JPG](./EXAMPLE_JPG.py) file types\*) - these are basic examples of how to calculate spacing and orientation of images using various step and kernel sizes - the outputs will be available in tests/test_output on your machine, in a folder with either ENVI or JPG along with ENVI or JPG in the name. Call the scripts from the top directory using:
+3. Run one of the driver scripts (for either [ENVI](./EXAMPLE_ENVI.py) and [JPG](./EXAMPLE_JPG.py) file types\*\*) - these are basic examples of how to calculate spacing and orientation of images using various step and kernel sizes - the outputs will be available in tests/test_output on your machine, in a folder with either ENVI or JPG along with ENVI or JPG in the name. Call the scripts from the top directory using:
 
 		python EXAMPLE_ENVI.py
 		python EXAMPLE_JPG.py
 
 4. For more info on exactly how the program works, keep reading...
 
-\* The scripts contain a variable called `interact` - if you set this to True, output images will pop up on screen - on linux, this requires you to have X11 forwarding enabled
+\* If you do not have X11() forwarding set, you will receive a non-fatal error warning you that interactive plots won't work - everything else will
+\*\* The scripts contain a variable called `interact` - if you set this to True, output images will pop up on screen - on linux, this requires you to have X11 forwarding enabled
 
 NB/ there are some problems in OS X environments that are still being worked on (see [OS X related issues](#os-x-related-issues))*
 
@@ -128,6 +129,8 @@ Log files:
 ## Testing
 
 A suite of [nosetests](http://nose.readthedocs.io/en/latest/) compatible tests are available to ensure that the program compiles and works with ENVI (.bin and .hdr file pairs) and .jpg images, as well as tests for functions that are used throughout the program. These are available at [tests/tests.py](./tests/tests.py) and can be run from the top directory of the program by typing `nosetests`.
+
+If you do not have X11() forwarding set for your environment, you will receive a non-fatal error warning you that interactive plots won't work - everything else will.
 
 ## Dependencies and other details
 
