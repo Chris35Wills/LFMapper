@@ -130,7 +130,7 @@ def test_plots():
 		import numpy as np
 		a=np.ones([3,3])
 		envidata=False
-		plots.plot_image(a, "test", "tests/test_output/TEST_PLOT", envidata, 1)
+		plots.plot_image(a, 'test', 'tests/test_output/TEST_PLOT', envidata, 1)
 	except:
 		sys.exit("FATAL ERROR: crevassemap.plots() failed")
 

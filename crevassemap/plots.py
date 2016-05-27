@@ -7,19 +7,19 @@ import scipy.misc
 import util
 import raster_functions
 
-def save_array_as_txt(arr, ofile):
-	"""
-	Saves a numpy array as a png file
 
-	NOT RECOMMENDED FOR LARGE FILES
-	"""	
-
-	numpy.savetxt(fname, X, fmt='%.18e', delimiter=' ', newline='\n', header='', footer='', comments='# ')[source]
+#def save_array_as_txt(arr, ofile):
+#	"""
+#	Saves a numpy array as a png file
+#
+#	NOT RECOMMENDED FOR LARGE FILES
+#	"""	
+#	numpy.savetxt(fname, X, fmt='%.18e', delimiter=' ', newline='\n', header='', footer='', comments='# ')[source]
 
 def save_array_as_image(arr, ofile):
 	"Saves a numpy array as an image file - type depends on extension set by user"	
 	util.check_output_dir(ofile)
-	scipy.misc.imsave('outfile.jpg', arr)
+	scipy.misc.imsave(ofile, arr)
 
 def plot_image(img, title, filename, envidata, post, remove_empty_cols=0):
 	'''	
