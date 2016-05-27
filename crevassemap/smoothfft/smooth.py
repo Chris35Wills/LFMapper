@@ -51,4 +51,4 @@ if __name__ == '__main__':
   plt.subplot(2,2,4)
   plt.imshow(np.log(np.abs(np.fft.fftshift(puppy_smooth_fft))))
   plt.savefig('puppies.png')
-  plt.show()
+  #plt.show()

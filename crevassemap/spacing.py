@@ -46,7 +46,10 @@ def find_spacing_at_point(image, x, y, kernel_size, spectrum_n=1.0, show_fft=0):
 
 	flattened = flatten.flatten_spectrum(fftimg, n=spectrum_n)
 
-	if show_fft==1: plt.imshow(flattened), plt.colorbar(), plt.show()
+	if show_fft==1: 
+		plt.imshow(flattened)
+		plt.colorbar()
+		plt.show()
 
 	half_fft = np.log(flattened)[:,:(half_kernel + 1)]
 
@@ -127,7 +130,7 @@ def find_spacings(image_array, date, kernel_size, stepsize, envidata, post, outp
 
 	for out_i, ii in enumerate(range(window_border_indent, window_border_indent_end_Y, stepsize)):
 		for out_j, jj in enumerate(range(window_border_indent, window_border_indent_end_X, stepsize)):
-			angle, dist, snr = find_spacing_at_point(image_array, ii, jj, kernel_size, spectrum_n)
+			angle, dist, snr = find_spacing_at_point(image_array, ii, jj, kernel_size, spectrum_n, show_fft=0)
 			space[out_i, out_j] = dist * post
 			orientation[out_i, out_j] = angle
 			SnR_imgout[out_i, out_j] = snr
