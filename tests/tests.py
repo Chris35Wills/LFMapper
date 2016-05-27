@@ -148,7 +148,7 @@ def test_100_full_run_ENVI():
 		for stepsize in step_range:
 			for kernel_size in kernel_range:
 				img = image_step_clean.image_step_clean(stepsize, image_array)
-				spacing.find_spacings(img, date, kernel_size, stepsize, envidata, post, output_dir, spectrum_n)
+				spacing.find_spacings(img, date, kernel_size, stepsize, envidata, post, output_dir, spectrum_n, interact=False)
 
 	except:
 		sys.exit("FATAL ERROR: Main code has broken down using an ENVI file... consider changes since last commit")
@@ -170,7 +170,7 @@ def test_101_full_run_NON_ENVI():
 		for stepsize in step_range:
 			for kernel_size in kernel_range:
 				img = image_step_clean.image_step_clean(stepsize, image_array)
-				spacing.find_spacings(img, date, kernel_size, stepsize, envidata, post, output_dir, spectrum_n)
+				spacing.find_spacings(img, date, kernel_size, stepsize, envidata, post, output_dir, spectrum_n, interact=False)
 
 	except:
 		sys.exit("FATAL ERROR: Main code has broken down using a NON-ENVI file... consider changes since last commit")

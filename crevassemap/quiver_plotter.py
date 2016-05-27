@@ -83,9 +83,6 @@ def quiver_plot(orientation, spacing, opath, plot_title, filename, interact=Fals
 		plt.title("Quiver plot")
 		plt.show()
 	
-	
-	
-
 	return orientation, spacing
 
 if __name__ == "__main__":
