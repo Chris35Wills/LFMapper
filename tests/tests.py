@@ -102,7 +102,7 @@ def test_98_load_envi_dimensions():
 	envi_file_name = 'tests/TEST_DATA/helheim_hyperspec_subset.bin'
 	image_array, post, (geotransform, inDs) = raster_functions.load_envi(envi_file_name)
 	expect_cols = 1000.
-	
+
 	try:
 		assert image_array.shape[0] == expect_cols
 	except AssertionError:
@@ -130,9 +130,9 @@ def test_plots():
 		import numpy as np
 		a=np.ones([3,3])
 		envidata=False
-		plots.plot_image(a, "test", "tests/test_output/TEST_PLOT.PNG", envidata, 1)
+		plots.plot_image(a, "test", "tests/test_output/TEST_PLOT", envidata, 1)
 	except:
-		sys.exit("crevassemap.plots() failed")
+		sys.exit("FATAL ERROR: crevassemap.plots() failed")
 
 def test_100_full_run_ENVI():
 

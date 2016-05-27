@@ -42,10 +42,10 @@ def plot_image(img, title, filename, envidata, post, remove_empty_cols=0):
 	ax.set_title(title)
 	cbar=fig.colorbar(cax)
 	plt.savefig(filename + '.png', dpi=300, transparent=True)
+	plt.clf()
+	
 
-	#if envidata != False:
-	#	print("all good")
-
+	## put into new function.... <<<<<<<<<<<<<<<<<<<<<<<<<<<
 	if envidata != False:
 		print "Geospatial data provided :)"
 		raster_functions.ENVI_raster_binary_from_2d_array(envidata, filename + '.bin', post, img)
