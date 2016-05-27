@@ -86,16 +86,12 @@ def test_access_smooth():
 	except:
 		sys.exit("FATAL ERROR: smooth function can't be accessed - check access to crevassemap module")	
 
-def test_plotting():
+def test_display():
 	try:
-		import matplotlib.pyplot as plt
-		x=[1,2,3,4]
-		y=[1,2,3,4]
-		plt.plot(x,y)
-		plt.show()
-		#plt.close()
+		havedisplay = "DISPLAY" in os.environ
+		assert havedisplay
 	except:
-		sys.exit("NON-FATAL ERROR: plotting not working - check you have x11 forwarding enabled")
+		sys.exit("NON-FATAL ERROR: x11 forwarding not enabled - interactive plotting won;t work but code will run")
 
 ##### Raster functions test
 def test_98_load_envi_dimensions():
