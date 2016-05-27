@@ -44,7 +44,7 @@ def test_numpy_version():
 	try:
 		import numpy as np
 		from distutils.version import StrictVersion
-		assert np.version.version>=StrictVersion('1.8.0')
+		assert np.version.version>=StrictVersion('3.8.0')
 	except:
 		sys.exit("FATAL ERROR: Update numpy to at least version 1.8.0")
 
