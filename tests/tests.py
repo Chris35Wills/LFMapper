@@ -39,31 +39,44 @@ def test_python_version():
 		v = sys.version_info[0] + sys.version_info[1]/10.
 		assert v == 2.7
 	except:
-		sys.exit("Requires python v2.7 to run - you have v%i.%i installed" %(sys.version_info[0], sys.version_info[1]))
+		sys.exit("FATAL ERROR: Requires python v2.7 to run - you have v%i.%i installed" %(sys.version_info[0], sys.version_info[1]))
 
 
 ##### Test function imports
 
-def test_01_standard_imports():
+def test_numpy_access():
 	try:
 		import numpy
-		import matplotlib.pyplot
 	except:
-		sys.exit("Check you have access to numpy and matplotlib")
+		sys.exit("FATAL ERROR: Access to numpy failed")
+
+def test_numpy_version():
 	
-def test_02_scipy_access():
+	try:
+		import numpy as np
+		assert np.version.version>=StrictVersion('1.8.0')
+	except:
+		sys.exit("FATAL ERROR: Update numpy to at least version 1.8.0")
+
+def test_matplotlib_access():
+	try:
+		import matplotlib
+	except:
+		sys.exit("FATAL ERROR: Access to matplotlib failed")
+
+def test_scipy_access():
 	try:
 		import scipy
 	except:
-		sys.exit("Access to scipy failed - check you have it installed - if using anaconda install using: conda install scipy")
+		sys.exit("FATAL ERROR: Access to scipy failed - check you have it installed - if using anaconda install using: conda install scipy")
 
-def test_03_osgeo_access():
+def test_osgeo_access():
 	try:
 		import osgeo	
 	except:
-		sys.exit("osgeo not available - check you have it installed - if using anaconda install using: conda install -c osgeo gdal=1.11.4")
+		sys.exit("FATAL ERROR: osgeo not available - check you have it installed - if using anaconda install using: conda install -c osgeo gdal=1.11.4")
 
-def test_04_bespoke_imports():
+def test_bespoke_imports():
 	### these are bespoke to this program
 		
 	try:
@@ -75,32 +88,25 @@ def test_04_bespoke_imports():
 		from crevassemap import quiver_plotter
 	except:
 		package_fail=1
-		sys.exit("Bespoke imports FAILED - check you are in the right directory to import the crevassemap module")
+		sys.exit("FATAL ERROR: crevassemap imports FAILED - check you are in the right directory to import the crevassemap module from LFMapper")
 
-def test_05_access_smooth():
+def test_access_smooth():
 	try:
 		from crevassemap.smoothfft import smooth
 	except:
-		sys.exit("smooth function can't be accessed - check access to crevassemap module")	
+		sys.exit("FATAL ERROR: smooth function can't be accessed - check access to crevassemap module")	
 
-"""
-def test_06_numpy_nanmean():
-	import numpy as np
-	a=[1,2,3,4]
-	
+def test_plotting():
 	try:
-		np.nanmean(a)
+		import matplotlib.pyplot as plt
+		x=[1,2,3,4]
+		y=[1,2,3,4]
+		plt.plot(x,y)
+		plt.show()
+		#plt.close()
 	except:
-		sys.exit("Numpy doesn't have acces to nanmean - Update Numpy to at least version 1.8.0")
-"""
+		sys.exit("NON-FATAL ERROR: plotting not working - check you have x11 forwarding enabled")
 
-def test_numpy_version():
-	
-	try:
-		import numpy as np
-		assert np.version.version>=StrictVersion('1.8.0')
-	except:
-		sys.exit("Update numpy to at least version 1.8.0")
 ##### Raster functions test
 def test_98_load_envi_dimensions():
 	
@@ -109,7 +115,7 @@ def test_98_load_envi_dimensions():
 	try:
 		assert image_array.shape[0] == expect_cols
 	except AssertionError:
-		sys.exit("ENVI file loading not working properly - array object different size to specified image dimensions\n -- check file and path is valid")
+		sys.exit("FATAL ERROR: ENVI file loading not working properly - array object different size to specified image dimensions\n -- check file and path is valid")
 		
 
 def test_99_load_envi_post():
@@ -119,7 +125,7 @@ def test_99_load_envi_post():
 	try:
 		assert post == non_envi_post
 	except AssertionError:
-		sys.exit("ENVI file loading not working properly - observed post different to expected post\n -- check file and path is valid")
+		sys.exit("FATAL ERROR: ENVI file loading not working properly - observed post different to expected post\n -- check file and path is valid")
 
 ##### Main Tests
 
@@ -145,7 +151,7 @@ def test_100_full_run_ENVI():
 				spacing.find_spacings(img, date, kernel_size, stepsize, envidata, post, output_dir, spectrum_n)
 
 	except:
-		sys.exit("Main code has broken down using an ENVI file... consider changes since last commit")
+		sys.exit("FATAL ERROR: Main code has broken down using an ENVI file... consider changes since last commit")
 
 def test_101_full_run_NON_ENVI():
 		
@@ -167,6 +173,6 @@ def test_101_full_run_NON_ENVI():
 				spacing.find_spacings(img, date, kernel_size, stepsize, envidata, post, output_dir, spectrum_n)
 
 	except:
-		sys.exit("Main code has broken down using a NON-ENVI file... consider changes since last commit")
+		sys.exit("FATAL ERROR: Main code has broken down using a NON-ENVI file... consider changes since last commit")
 
 
