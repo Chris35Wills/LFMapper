@@ -6,6 +6,7 @@ Whilst the program remains private, run these with nosetests.
 Once program goes public, integrate with travis.
 """
 import sys
+import os
 from distutils.version import StrictVersion
 
 def check_odd_step(val):
@@ -86,12 +87,33 @@ def test_access_smooth():
 	except:
 		sys.exit("FATAL ERROR: smooth function can't be accessed - check access to crevassemap module")	
 
+
 def test_display():
+	havedisplay = "DISPLAY" in os.environ
 	try:
-		havedisplay = "DISPLAY" in os.environ
-		assert havedisplay
+		assert havedisplay == True
+	except AssertionError:
+		sys.exit("NON-FATAL ERROR: DISPLAY not set - interactive plotting might not work but code will run")
+
+
+"""
+def test_access_subprocess():
+	try:
+		import subprocess
 	except:
-		sys.exit("NON-FATAL ERROR: x11 forwarding not enabled - interactive plotting won't work but code will run")
+		sys.exit("FATAL ERROR: subprocess can't be accessed - please install it")	
+
+
+def test_X11():
+	from subprocess import Popen, PIPE
+	p = Popen(["xset", "-q"], stdout=PIPE, stderr=PIPE)
+	p.communicate()
+    
+    try:
+    	assert p.returncode == 0 
+    except AssertionError:
+		sys.exit("NON-FATAL ERROR: X11() forwarding not set - interactive plotting might not work but code will run")    	
+"""
 
 ##### Raster functions test
 def test_98_load_envi_dimensions():
