@@ -35,12 +35,15 @@ def plot_image(img, title, filename, envidata, post, remove_empty_cols=0):
 	if remove_empty_cols == 1:
 		img = util.trim_constant_rows_cols(img) 
 
-	fig, ax = plt.subplots()
-	cax = ax.imshow(img, cmap=cm.coolwarm, interpolation='none')
-	ax.set_xticklabels(" ")
-	ax.set_yticklabels(" ")
-	ax.set_title(title)
-	cbar=fig.colorbar(cax)
+	#fig, ax = plt.subplots()
+	#cax = ax.imshow(img, cmap=cm.coolwarm, interpolation='none')
+	#ax.set_xticklabels(" ")
+	#ax.set_yticklabels(" ")
+	#ax.set_title(title)
+	#cbar=fig.colorbar(cax)
+	plt.imshow(img, cmap=cm.coolwarm)
+	plt.title(title)
+	plt.colorbar()
 	plt.savefig(filename + '.png', dpi=300, transparent=True)
 	plt.clf()
 	
