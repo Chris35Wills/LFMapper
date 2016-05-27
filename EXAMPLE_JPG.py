@@ -42,7 +42,7 @@ plt.show(block=False)
 for stepsize in step_range:
 	for kernel_size in kernel_range:
 		img = image_step_clean.image_step_clean(stepsize, image_array)
-		spacing.find_spacings(img, flag, kernel_size, stepsize, envidata, post, output_dir, spectrum_n, interact=True)
+		spacing.find_spacings(img, flag, kernel_size, stepsize, envidata, post, output_dir, spectrum_n, interact=False)
 
 print("\n JPG EXAMPLE COMPLETE\n")
 print("\n Data saved: %s \n" %output_dir)
