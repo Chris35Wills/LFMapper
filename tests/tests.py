@@ -91,7 +91,7 @@ def test_display():
 		havedisplay = "DISPLAY" in os.environ
 		assert havedisplay
 	except:
-		sys.exit("NON-FATAL ERROR: x11 forwarding not enabled - interactive plotting won;t work but code will run")
+		sys.exit("NON-FATAL ERROR: x11 forwarding not enabled - interactive plotting won't work but code will run")
 
 ##### Raster functions test
 def test_98_load_envi_dimensions():
