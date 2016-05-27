@@ -8,17 +8,6 @@ Once program goes public, integrate with travis.
 import sys
 from distutils.version import StrictVersion
 
-# Some test data (and associated dimensions)
-non_envi_file_name = 'tests/TEST_DATA/zebra.jpg'
-non_envi_cols = 518
-non_envi_rows = 386
-non_envi_post = 1
-
-envi_file_name = 'tests/TEST_DATA/helheim_hyperspec_subset.bin'
-output_dir = 'tests/test_output'
-expect_cols = 1000.
-expect_rows = 1000.
-
 def check_odd_step(val):
 	try:
 		assert val %2 !=0
@@ -110,8 +99,10 @@ def test_plotting():
 ##### Raster functions test
 def test_98_load_envi_dimensions():
 	
+	envi_file_name = 'tests/TEST_DATA/helheim_hyperspec_subset.bin'
 	image_array, post, (geotransform, inDs) = raster_functions.load_envi(envi_file_name)
-
+	expect_cols = 1000.
+	
 	try:
 		assert image_array.shape[0] == expect_cols
 	except AssertionError:
@@ -120,7 +111,9 @@ def test_98_load_envi_dimensions():
 
 def test_99_load_envi_post():
 	
+	non_envi_file_name = 'tests/TEST_DATA/zebra.jpg'
 	image_array, post, (geotransform, inDs) = raster_functions.load_envi(non_envi_file_name)
+	non_envi_post = 1
 	
 	try:
 		assert post == non_envi_post
@@ -129,11 +122,27 @@ def test_99_load_envi_post():
 
 ##### Main Tests
 
-from crevassemap import raster_functions, spacing, image_step_clean
+from crevassemap import raster_functions, spacing, image_step_clean, plots
+
+def test_plots():
+
+	try:
+		import numpy as np
+		a=np.ones([3,3])
+		envidata=False
+		plots.plot_image(a, "test", "tests/test_output/TEST_PLOT.PNG", envidata, 1)
+	except:
+		sys.exit("crevassemap.plots() failed")
 
 def test_100_full_run_ENVI():
 
 	try:
+
+		envi_file_name = 'tests/TEST_DATA/helheim_hyperspec_subset.bin'
+		output_dir = 'tests/test_output'
+		expect_cols = 1000.
+		expect_rows = 1000.
+
 		step_range = ([101])#([3])
 		kernel_range = ([9])#([3])
 
@@ -156,6 +165,13 @@ def test_100_full_run_ENVI():
 def test_101_full_run_NON_ENVI():
 		
 	try:
+
+		non_envi_file_name = 'tests/TEST_DATA/zebra.jpg'
+		output_dir = 'tests/test_output'
+		non_envi_cols = 518
+		non_envi_rows = 386
+		non_envi_post = 1
+
 		step_range = ([51])
 		kernel_range = ([9])
 
