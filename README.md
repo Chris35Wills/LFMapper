@@ -13,7 +13,7 @@
 
 4. For more info on exactly how the program works, keep reading...
 
-\* The scripts contain a variable called `interact` - if you set this to True, output images will pop up on screen - this requires you to have x11 forwarding enabled - if not, the script will fail
+\* The scripts contain a variable called `interact` - if you set this to True, output images will pop up on screen - on linux, this requires you to have X11 forwarding enabled
 
 NB/ there are some problems in OS X environments that are still being worked on (see [OS X related issues](#os-x-related-issues))*
 
