@@ -39,7 +39,7 @@ image_array, post, envidata = raster_functions.load_envi(envi_file_name)
 if interact:
 	plt.imshow(image_array)
 	plt.title("input ENVI")
-	plt.show(block=False)
+	plt.show()
 
 for stepsize in step_range:
 	for kernel_size in kernel_range:
