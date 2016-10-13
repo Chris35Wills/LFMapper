@@ -1,11 +1,5 @@
 nose
 numpy
-os
 matplotlib
 scipy
 osgeo
-math
-distutils
-time
-copy
-fractions
