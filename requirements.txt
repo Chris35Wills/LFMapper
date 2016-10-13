@@ -1,11 +1,11 @@
 nose
-import numpy
-import os
-import matplotlib
-import scipy
-import osgeo
-import math
-import distutils
-import time
-import copy
-import fractions
+numpy
+os
+matplotlib
+scipy
+osgeo
+math
+distutils
+time
+copy
+fractions
