@@ -1,7 +1,6 @@
 language: python
 python:
     - "2.7"
-    - "nightly"
 script: nosetests
 sudo: required
 notifications:
@@ -29,7 +28,7 @@ install:
   - conda info -a
 
   # Replace dep1 dep2 ... with your dependencies
-  - conda create -q -n test-environment python=$TRAVIS_PYTHON_VERSION numpy matplotlib scipy osgeo nose
+  - conda create -q -n test-environment python=$TRAVIS_PYTHON_VERSION numpy matplotlib scipy gdal nose
   - source activate test-environment
   - python setup.py install
 
