@@ -1,0 +1,15 @@
+.travis.yml
+
+language: python
+python:
+    - "2.7"
+    - "nightly"
+install:
+    - "pip install -r requirements.txt"
+script: nosetests
+notifications:
+  email:
+    recipients:
+      - chris.neil.wills@gmail.com      
+    on_success: [always]
+    on_failure: [always]
