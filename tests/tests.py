@@ -23,7 +23,7 @@ def check_odd_kernel(val):
 
 ##### Test python version
 
-def test_python_version(): 
+def test_01_python_version(): 
 	
 	try:
 		v = sys.version_info[0] + sys.version_info[1]/10.
