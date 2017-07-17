@@ -1,5 +1,7 @@
 # LFMapper (Linear Feature Mapper)
 
+[![DOI](https://zenodo.org/badge/59702480.svg)](https://zenodo.org/badge/latestdoi/59702480)
+
 ## Usage
 
 1. Ensure that you have all of the packages available and visible to python listed [here](#dependencies-and-other-details);
