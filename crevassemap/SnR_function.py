@@ -53,10 +53,10 @@ def SignalToNoise(array, array_max):
 	SD = np.nanstd(array_omit_max) # standard deviation
 		
 	if(SnR_float>(2*SD)):
-		#print "SnR ratio acceptable - peak identified"
+		#print("SnR ratio acceptable - peak identified")
 		return True
 	else:
-		#print "SnR ratio unacceptable - peak identified"
+		#print("SnR ratio unacceptable - peak identified")
 		return False
 
 def SignalToNoise_with_output(array, array_max, imgout, ii, jj, stepsize):

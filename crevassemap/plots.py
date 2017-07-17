@@ -50,12 +50,12 @@ def plot_image(img, title, filename, envidata, post, remove_empty_cols=0):
 
 	## put into new function.... <<<<<<<<<<<<<<<<<<<<<<<<<<<
 	if envidata != False:
-		print "Geospatial data provided :)"
+		print("Geospatial data provided :)")
 		raster_functions.ENVI_raster_binary_from_2d_array(envidata, filename + '.bin', post, img)
 	# <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 	# <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< PROBLEM WITH THIS CATCH STILL - ARRAYS DEVELOPING ZERO AXIS....
 	else:
-		print "No geospatial data provided - saving as txt file."
+		print("No geospatial data provided - saving as txt file.")
 		ofile="%s.png" %filename
 		save_array_as_image(img, ofile)
 	

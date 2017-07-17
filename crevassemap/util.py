@@ -20,9 +20,9 @@ def check_output_dir(filename):
 	'''
 	dirname = os.path.dirname(filename)
 	if not os.path.isdir(dirname):	
-		print "%s DOESN'T exist...\n" % dirname
+		print("%s DOESN'T exist...\n" % dirname)
 		os.makedirs(dirname) 
-		print "...but it does now"
+		print("...but it does now")
 
 def check_if_file_exists(filename):
 	'''
@@ -31,7 +31,7 @@ def check_if_file_exists(filename):
 	'''
 
 	if os.path.isfile(filename):	
-		print "%s Already exists...\n" % filename
+		print("%s Already exists...\n" % filename)
 		zeit=time.strftime('%H''.''%M''.''%S') # see https://docs.python.org/2/library/time.html#time.strftime
 		date=time.strftime('%d''%m''%y')
 

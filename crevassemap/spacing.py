@@ -1,5 +1,3 @@
-from __future__ import division
-
 import time
 import sys
 
@@ -15,8 +13,6 @@ import quiver_plotter
 import util
 from smoothfft import smooth
 import plots, SnR_function
-reload(plots)
-reload(quiver_plotter)
 
 def find_spacing_of_image(image, spectrum_n=1.0):
 	xsize, ysize = image.shape
@@ -136,7 +132,7 @@ def find_spacings(image_array, date, kernel_size, stepsize, envidata, post, outp
 			SnR_imgout[out_i, out_j] = snr
 			orig[out_i, out_j] = image_array[ii, jj]
 
-	print "PRINTING IMAGES...."
+	print("PRINTING IMAGES....")
 	img_prefix = opath + '/%s_winsize_%i_stepsize_%i_nvalue_%f_%s' % (date, kernel_size, stepsize, spectrum_n, time_stamp)
 	new_post = post * stepsize
 
@@ -162,7 +158,7 @@ def find_spacings(image_array, date, kernel_size, stepsize, envidata, post, outp
 
 	endTime = time.time()
 	totalTime = endTime - startTime
-	print "Run took %f seconds to run" %(totalTime)
+	print("Run took %f seconds to run" %(totalTime))
 
 if __name__ == "__main__":
 	print("Run from import.")

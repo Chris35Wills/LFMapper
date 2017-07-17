@@ -73,7 +73,7 @@ def write_stats(filename, spacings, orientations, wavelength, snrs, wave_type, n
 		f.write("wave_type, noise_type, noise_scale, wavelength,  RMS spacing approx. vs obs, spacing mean, RMS orientations, SnR mean\n")
 	f.write("%s, %s, %s, %s, %f, %f, %f, %f\n" %(wave_type, noise_type, noise_scale, wavelength, rms(spacings - wavelength), spacings.mean(), rms(orientations), snrs.mean() ))
 	f.close()
-	print "Stats file: %s" %(filename)
+	print("Stats file: %s" %(filename))
 
 ## If artificial.py is run at command line then __name__ == __main__
 ## If imported as a module, then __name__ != __main__
