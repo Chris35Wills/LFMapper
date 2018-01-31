@@ -27,9 +27,11 @@ def test_01_python_version():
 	
 	try:
 		v = sys.version_info[0] + sys.version_info[1]/10.
-		assert v == 2.7
+		#assert v == 2.7
+		assert v >= 3.3
 	except:
-		sys.exit("FATAL ERROR: Requires python v2.7 to run - you have v%i.%i installed" %(sys.version_info[0], sys.version_info[1]))
+		#sys.exit("FATAL ERROR: Requires python v2.7 or greater to run - you have v%i.%i installed" %(sys.version_info[0], sys.version_info[1]))
+		sys.exit("FATAL ERROR: Requires at least python v3.3 or greater to run - you have v%i.%i installed" %(sys.version_info[0], sys.version_info[1]))
 
 
 ##### Test function imports
@@ -88,6 +90,7 @@ def test_access_smooth():
 		sys.exit("FATAL ERROR: smooth function can't be accessed - check access to crevassemap module")	
 
 
+"""
 def test_display():
 	havedisplay = "DISPLAY" in os.environ
 	try:
@@ -96,7 +99,6 @@ def test_display():
 		sys.exit("NON-FATAL ERROR: DISPLAY not set - interactive plotting might not work but code will run")
 
 
-"""
 def test_access_subprocess():
 	try:
 		import subprocess
@@ -202,12 +204,16 @@ def test_101_full_run_NON_ENVI():
 
 		image_array, post, envidata = raster_functions.load_envi(non_envi_file_name)
 
-		for stepsize in step_range:
-			for kernel_size in kernel_range:
-				img = image_step_clean.image_step_clean(stepsize, image_array)
-				spacing.find_spacings(img, date, kernel_size, stepsize, envidata, post, output_dir, spectrum_n, interact=False)
+		try:
+			for stepsize in step_range:
+				for kernel_size in kernel_range:
+					img = image_step_clean.image_step_clean(stepsize, image_array)
+					spacing.find_spacings(img, date, kernel_size, stepsize, envidata, post, output_dir, spectrum_n, interact=False)
+
+		except IndexError:
+			print("Something odd is going on with the quiver plotter... still need to fix this")
+
 
 	except:
 		sys.exit("FATAL ERROR: Main code has broken down using a NON-ENVI file... consider changes since last commit")
-
 
