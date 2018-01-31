@@ -5,7 +5,7 @@ import numpy as np
 import math
 from numpy import *
 
-import util
+import crevassemap.util as util
 
 def write_stats(filename, data, date, kernel_size, stepsize):
 	util.check_output_dir(filename)
