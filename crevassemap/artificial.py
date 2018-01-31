@@ -2,7 +2,7 @@ from __future__ import division
 import numpy as np
 import os
 
-import util
+import crevassemap.util as util
 
 
 # size = 1 side of a square (px)
