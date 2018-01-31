@@ -5,7 +5,7 @@ import sys
 from osgeo import gdal, gdalconst 
 from osgeo.gdalconst import * 
 
-import util
+import crevassemap.util as util
 # Register driver
 #gdal.AllRegister() #<-- useful only if reading in 
 driver = gdal.GetDriverByName('ENVI') ## http://www.gdal.org/formats_list.html
