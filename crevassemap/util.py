@@ -4,6 +4,7 @@ import os
 import os.path
 
 import numpy as np
+import time
 
 def trim_constant_rows_cols(img):
 	'''
