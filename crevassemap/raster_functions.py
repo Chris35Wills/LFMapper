@@ -11,6 +11,64 @@ import util
 driver = gdal.GetDriverByName('ENVI') ## http://www.gdal.org/formats_list.html
 driver.Register()
 
+# add to crevasemap module
+def raster_binary_to_2d_array(file_name, gdal_driver='GTiff'):
+	'''
+	Converts a binary file of ENVI type to a numpy arra.
+	Lack of an ENVI .hdr file will cause this to crash.
+	VARIABLES
+	file_name : file name and path of your file
+	RETURNS
+	geotransform, inDs, cols, rows, bands, originX, originY, pixelWidth, pixelHeight, image_array, image_array_name
+	'''
+	driver = gdal.GetDriverByName(gdal_driver) ## http://www.gdal.org/formats_list.html
+	driver.Register()
+
+	inDs = gdal.Open(file_name, GA_ReadOnly)
+	
+	if inDs is None:
+		print("Couldn't open this file: %s" %(file_name))
+		print('/nPerhaps you need an ENVI .hdr file? A quick way to do this is to just open the binary up in ENVI and one will be created for you.')
+		sys.exit("Try again!")
+	else:
+		print("%s opened successfully" %file_name)
+		
+		
+	#print( )'Get image size')
+	cols = inDs.RasterXSize
+	rows = inDs.RasterYSize
+	bands = inDs.RasterCount
+
+					
+	#print( )'Get georeference information')
+	geotransform = inDs.GetGeoTransform()
+	originX = geotransform[0]
+	originY = geotransform[3]
+	pixelWidth = geotransform[1]
+	pixelHeight = geotransform[5]
+		
+		
+	# Set pixel offset.....
+	band = inDs.GetRasterBand(1)
+	image_array = band.ReadAsArray(0, 0, cols, rows)
+	image_array_name = file_name
+
+	
+	return geotransform, inDs, cols, rows, bands, originX, originY, pixelWidth, pixelHeight, image_array, image_array_name
+
+# add to crevasemap module
+def load_dem(file_name):
+	'''
+	Loads an ENVI binary as a numpy image array also returning a tuple including map and projection info
+	VARIABLES
+	file_name : file name and path of your file
+	RETURNS
+	image_array, post, (geotransform, inDs)
+	'''
+	geotransform, inDs, _, _, _, _, _, post, _, image_array, _ = raster_binary_to_2d_array(file_name)
+	return image_array, post, (geotransform, inDs)
+
+# NEEDS TO BE REMOVED...CHANGE FUNCTIONS TO USE raster_binary_to_2d_array and set variable gdal_driver to 'ENVI' if required
 def ENVI_raster_binary_to_2d_array(file_name):
 	'''
 	Converts a binary file of ENVI type to a numpy arra.
@@ -71,6 +129,7 @@ def ENVI_raster_binary_to_2d_array(file_name):
 		
 		return geotransform, inDs, cols, rows, bands, originX, originY, pixelWidth, pixelHeight, image_array, image_array_name
 
+# NEEDS TO BE REMOVED...CHANGE FUNCTIONS TO USE load_dem
 def load_envi(file_name):
 	'''
 	Loads an ENVI binary as a numpy image array also returning a tuple including map and projection info
