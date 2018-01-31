@@ -86,32 +86,38 @@ while kernel < centre_row//2 and kernel < centre_col//2:
 
 
 # Write file out
-#fout='/home/staff/ggwillc/Desktop/Python_scripts/newstart/kernel_size_estimation/gris/kernel_spacing_%s.csv' %(area)
 fout='%s/kernel_estimation_out/kernel_spacing_%s_smooth_factor_%0.1f.csv' %(opath, aoi, spectrum_n)
 util.check_output_dir(fout)
 
 
 f=open(fout, 'w')
-#f.write("Kernel size (m), Feature spacing (m)\n")
 f.write("Kernel size (m), Feature spacing (m), SnR\n")
 for i in range(len(kernel_size_LIST)):
-	#f.write("%f, %f\n" %(kernel_size_LIST[i], feature_spacing_m_LIST[i]))
 	f.write("%f, %f, %f\n" %(kernel_size_LIST[i], feature_spacing_m_LIST[i], snr_LIST[i]))
 f.close()	
 	
 ## Plot data
 
-<<<<<<<<<<<<<<<<
-
-ofigOut='%s/kernel_estimation_out/kernel_spacing_%s_smooth_factor_%0.1f.png' %(opath, str(kernel_size_LIST), spectrum_n)
+ofigOut='%s/kernel_estimation_out/kernel_size_to_spacing_%s_smooth_factor_%0.1f.png' %(opath, aoi, spectrum_n)
 util.check_output_dir(fout)
 
-plt.plot(kernel_size_LIST, feature_spacing_m_LIST, 'o', markersize=10)
+fig=plt.figure()
+ax1=fig.add_subplot(111)
 
-plt.ylim(0, np.max(feature_spacing_m_LIST_inst) * 1.1)
-plt.xlabel("Kernel size (m)")
-plt.ylabel("Maximum point spacing (m)")
+ax1.plot(kernel_size_LIST, feature_spacing_m_LIST, 'o', markersize=7)
+
+ax1.set_ylim(np.min(feature_spacing_m_LIST) * 0.8, np.max(feature_spacing_m_LIST) * 1.2)
+ax1.set_xlabel("Kernel size (m)")
+ax1.set_ylabel("Maximum point spacing (m)")
+ax1.patch.set_alpha(0.2)
+ax1.zorder=2
+
+ax2 = ax1.twinx()
+
+ax2.bar(kernel_size_LIST, snr_LIST, color='r', fill=False, width=1.0) 
+ax2.set_ylim(np.min(snr_LIST) * 0.8, np.max(snr_LIST) * 1.2)
+ax2.set_ylabel('Signal-to-noise', rotation=-90, labelpad=12)
+ax2.zorder=1
+
 plt.savefig(ofigOut)
 plt.clf()
-
-
