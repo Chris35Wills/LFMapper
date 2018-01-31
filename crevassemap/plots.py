@@ -4,8 +4,8 @@ import matplotlib.pyplot as plt
 from matplotlib import cm
 import scipy.misc
 
-import util
-import raster_functions
+import crevassemap.util as util
+import crevassemap.raster_functions as raster_functions
 
 
 #def save_array_as_txt(arr, ofile):
