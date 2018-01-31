@@ -6,13 +6,14 @@ import numpy as np
 from scipy import ndimage
 
 # local
-import flatten
-import FT_spacing_orientation_stats
-import more_fft_functions
-import quiver_plotter
-import util
-from smoothfft import smooth
-import plots, SnR_function
+import crevassemap.flatten as flatten 
+import crevassemap.FT_spacing_orientation_stats as FT_spacing_orientation_stats
+import crevassemap.more_fft_functions as more_fft_functions
+import crevassemap.quiver_plotter as quiver_plotter
+import crevassemap.util as util
+from crevassemap.smoothfft import smooth as smooth
+import crevassemap.plots as plots
+import crevassemap.SnR_function as SnR_function
 
 def find_spacing_of_image(image, spectrum_n=1.0):
 	xsize, ysize = image.shape
@@ -138,8 +139,8 @@ def find_spacings(image_array, date, kernel_size, stepsize, envidata, post, outp
 
  	# <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 	# <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< PROBLEM inside plot function if envidata==False such as using sine_wave_TEST.py (see plots.py)	
-	plots.plot_image(space, 'Crevasse spacing (m)', img_prefix + '_spacing_m', envidata, new_post, remove_empty_cols=1)
-	plots.plot_image(orientation, 'Crevasse orientation (degN.)', img_prefix + '_orientation', envidata, new_post, remove_empty_cols=1)
+	plots.plot_image(space, 'Spacing (m)', img_prefix + '_spacing_m', envidata, new_post, remove_empty_cols=1)
+	plots.plot_image(orientation, 'Orientation (degN.)', img_prefix + '_orientation', envidata, new_post, remove_empty_cols=1)
 	plots.plot_image(SnR_imgout, 'Signal-to-noise (%s)' % date, img_prefix + '_snr', envidata, new_post, remove_empty_cols=1)
 	plots.plot_image(orig, 'Original input image (%s)' % date, img_prefix + '_original', envidata, new_post, remove_empty_cols=1)
 
