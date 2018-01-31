@@ -6,8 +6,8 @@ import numpy as np
 from osgeo import gdal, gdalconst # for reading in raster
 from osgeo.gdalconst import * # for reading in raster
 
-import raster_functions 
-import util
+import crevassemap.raster_functions as raster_functions
+import crevassemap.util as util
 
 
 def quiver_plotter(orientation_binary, spacing_binary, opath, plot_title):
