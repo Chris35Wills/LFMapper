@@ -48,7 +48,10 @@ def find_spacing_at_point(image, x, y, kernel_size, spectrum_n=1.0, show_fft=0):
 		plt.colorbar()
 		plt.show()
 
+	
+	np.seterr(divide='ignore') # ignore "divide by zero encountered in log" RuntiemWarning
 	half_fft = np.log(flattened)[:,:(half_kernel + 1)]
+	np.seterr(divide='warn')
 
 	fft_max = half_fft.max()
 
