@@ -33,7 +33,7 @@ check_odd_step(step_range[0])
 flag = "GLACIER_ENVI"
 spectrum_n = 1.5 ## noise value (2 = brown)
 
-image_array, post, envidata = raster_functions.load_envi(envi_file_name)
+image_array, post, envidata = raster_functions.load_dem(envi_file_name, gdal_driver='ENVI')
 
 #plot input image
 if interact:
