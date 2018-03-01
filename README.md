@@ -142,14 +142,18 @@ The following packages are required on your machine:
 - [matplotlib](http://matplotlib.org/)
 - [scipy](http://scipy.org/)
 - [osgeo](https://pypi.python.org/pypi/GDAL/)
+- [georaster](http://georaster.readthedocs.io/en/latest/)
 
-If they aren't available and you are using [anaconda](https://www.continuum.io/downloads), these can be installed as:
+If they aren't available and you are using [anaconda](https://www.continuum.io/downloads), setting up an enviorn,net can be done using:
 
-	conda install -c osgeo gdal=1.11.2 numpy matplotlib scipy
+	conda create -n LFMapper_work python=3.5 anaconda
+	activate LFMapper_work
+	conda install -c osgeo gdal numpy matplotlib scipy
+	conda install -c conda-forge georaster
 
 The functions bespoke to this program are all located in the [crevassemap module](./crevassemap). So long as you run the main driver scripts within the main directory of the program structure, everything should be correctly located. To be sure, run the tests using `nosetests` in the top directory prior to a model run to ensure everything is in order.
 
-Various file formats can be used in the program - for geospatial imagery, use either ENVI format binary (.bin) and header (.hdr) pairs or GeoTiff. If you want to analyse .jpg images, these will also work but images won't be georeferenced (as there is no information available with which to achieve this).
+Various file formats can be used in the program - this is implemented using the function `raster_functions.raster_binary_to_2d_array()`, held within the [crevassemap module](./crevassemap). This function is demonstrated within the [ENVI example script](./EXAMPLE_ENVI.py). If you want to analyse .jpg images, these will also work but images won't be georeferenced (as there is no information available with which to achieve this) - see the [JPG example script](./EXAMPLE_JPG.py).
 
 ## OS X related issues
 
