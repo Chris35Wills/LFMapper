@@ -18,6 +18,7 @@ def raster_binary_to_2d_array(file_name, gdal_driver='GTiff'):
 	Lack of an ENVI .hdr file will cause this to crash.
 	VARIABLES
 	file_name : file name and path of your file
+	gdal_driver: select that which matches your dataset - see http://www.gdal.org/formats_list.html
 	RETURNS
 	geotransform, inDs, cols, rows, bands, originX, originY, pixelWidth, pixelHeight, image_array, image_array_name
 	'''
@@ -57,15 +58,16 @@ def raster_binary_to_2d_array(file_name, gdal_driver='GTiff'):
 	return geotransform, inDs, cols, rows, bands, originX, originY, pixelWidth, pixelHeight, image_array, image_array_name
 
 # add to crevasemap module
-def load_dem(file_name):
+def load_dem(file_name, gdal_driver):
 	'''
 	Loads an ENVI binary as a numpy image array also returning a tuple including map and projection info
 	VARIABLES
 	file_name : file name and path of your file
+	gdal_driver: select that which matches your dataset - see http://www.gdal.org/formats_list.html
 	RETURNS
 	image_array, post, (geotransform, inDs)
 	'''
-	geotransform, inDs, _, _, _, _, _, post, _, image_array, _ = raster_binary_to_2d_array(file_name)
+	geotransform, inDs, _, _, _, _, _, post, _, image_array, _ = raster_binary_to_2d_array(file_name, gdal_driver=gdal_driver)
 	return image_array, post, (geotransform, inDs)
 
 # NEEDS TO BE REMOVED...CHANGE FUNCTIONS TO USE raster_binary_to_2d_array and set variable gdal_driver to 'ENVI' if required
