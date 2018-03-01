@@ -144,7 +144,7 @@ The following packages are required on your machine:
 - [osgeo](https://pypi.python.org/pypi/GDAL/)
 - [georaster](http://georaster.readthedocs.io/en/latest/)
 
-If they aren't available and you are using [anaconda](https://www.continuum.io/downloads), setting up an enviorn,net can be done using:
+If they aren't available and you are using [anaconda](https://www.continuum.io/downloads), setting up an enviornment can be done using:
 
 	conda create -n LFMapper_work python=3.5 anaconda
 	activate LFMapper_work
