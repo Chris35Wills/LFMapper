@@ -1,6 +1,6 @@
 # LFMapper (Linear Feature Mapper)
 
-[![DOI](https://zenodo.org/badge/59702480.svg)](https://zenodo.org/badge/latestdoi/59702480)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.830250.svg)](https://doi.org/10.5281/zenodo.830250)
 
 ## Usage
 
