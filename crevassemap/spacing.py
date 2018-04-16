@@ -34,7 +34,8 @@ def find_spacing_at_point(image, x, y, kernel_size, spectrum_n=1.0, show_fft=0):
 	smooth.smooth_fft()
 	'''
 	half_kernel = (kernel_size-1)//2
-	subimg = image[(x - half_kernel):(x + half_kernel + 1), (y - half_kernel):(y + half_kernel + 1)]
+	#subimg = image[(x - half_kernel):(x + half_kernel + 1), (y - half_kernel):(y + half_kernel + 1)]
+	subimg = image[(x - half_kernel):(x + half_kernel), (y - half_kernel):(y + half_kernel)]
 	assert subimg.shape == (kernel_size, kernel_size), "Shape is %s, kernel is %d" % (subimg.shape, kernel_size)
 
 	blurred = ndimage.filters.gaussian_filter(subimg, sigma=1.0, order=0, mode='reflect')
