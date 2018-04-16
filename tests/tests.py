@@ -69,6 +69,12 @@ def test_osgeo_access():
 	except:
 		sys.exit("FATAL ERROR: osgeo not available - check you have it installed - if using anaconda install using: conda install -c osgeo gdal=1.11.4")
 
+def test_csv_access():
+	try:
+		import csv
+	except:
+		sys.exit("FATAL ERROR: Access to csv package failed")
+
 def test_bespoke_imports():
 	### these are bespoke to this program
 		
