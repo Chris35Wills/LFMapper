@@ -1,9 +1,6 @@
-from __future__ import division
 import numpy as np
 import os
-
 import crevassemap.util as util
-
 
 # size = 1 side of a square (px)
 # angle = radians ("0" is at 3 o'clock) - represents orientation
@@ -20,28 +17,49 @@ import crevassemap.util as util
 
 
 def xygrid(size):
+    """
+    size: this is the size of the array in pixels e.g. a value of 10 will provide a 10x10 array
+    """
     y, x = np.mgrid[:size, :size]
     return x, y
 
 def sloped(size, angle, slope=1.0):
+    """
+    size: this is the size of the array in pixels e.g. a value of 10 will provide a 10x10 array
+    """
     x, y = xygrid(size)
     return slope * (x * np.cos(angle) + y * np.sin(angle))
 
 def sine_wave(size, angle, wavelength):
+    """
+    size: this is the size of the 2D noise array in pixels e.g. a value of 10 will provide a 10x10 array
+    """
     return np.sin(sloped(size, angle, 2 * np.pi/wavelength))
 
 def square_wave(size, angle, wavelength):
+    """
+    size: this is the size of the array in pixels e.g. a value of 10 will provide a 10x10 array
+    """
     slope = sloped(size, angle, 2/wavelength)
     return np.where(slope % 2 > 1, 1, -1)
 
 def sawtooth_wave(size, angle, wavelength):
+    """
+    size: this is the size of the array in pixels e.g. a value of 10 will provide a 10x10 array
+    """
     slope = sloped(size, angle, 2/wavelength)
     return 2 * np.abs((slope % 2) - 1) - 1
 
 def white_noise(size):
+    """
+    size: this is the size of the array in pixels e.g. a value of 10 will provide a 10x10 array
+    """
     return np.random.randn(size, size)
 
 def coloured_noise(size, n):
+    """
+    size: this is the size of the array in pixels e.g. a value of 10 will provide a 10x10 array
+    """
     white = white_noise(size)
     fft = np.fft.fft2(white)
     x, y = xygrid(size)
@@ -55,9 +73,15 @@ def coloured_noise(size, n):
     return noise / np.std(noise)
 
 def brown_noise(size):
+    """
+    size: this is the size of the array in pixels e.g. a value of 10 will provide a 10x10 array
+    """
     return coloured_noise(size, 2)
 
 def pink_noise(size):
+    """
+    size: this is the size of the array in pixels e.g. a value of 10 will provide a 10x10 array
+    """
     return coloured_noise(size, 1)
 
 def rms(x):
