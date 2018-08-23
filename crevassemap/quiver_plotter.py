@@ -25,9 +25,10 @@ def quiver_plotter(orientation_binary, spacing_binary, opath, plot_title):
 
 def quiver_plot(orientation, spacing, opath, plot_title, filename, interact=False):
 	try:
-		orientation = util.trim_constant_rows_cols(orientation) #Trim image down so there is no blank border - useful if inputs have had to be resampled
-		spacing = util.trim_constant_rows_cols(spacing) #Trim image down so there is no blank border - useful if inputs have had to be resampled
 		
+		## The following two lines can lead to unexpected behaviour and uneven dimensions of the 2 arrays so are best avoided
+		#orientation = util.trim_constant_rows_cols(orientation) #Trim image down so there is no blank border - useful if inputs have had to be resampled
+		#spacing = util.trim_constant_rows_cols(spacing) #Trim image down so there is no blank border - useful if inputs have had to be resampled
 		#spacing[spacing == 0] = np.nan
 
 		rows, cols = spacing.shape
