@@ -95,6 +95,11 @@ def find_spacings(image_array, date, kernel_size, stepsize, envidata, post, outp
 	more_fft_functions.border_indent()
 	plots.plot_image()
 	util.trim_constant_rows_cols
+
+	Variables:
+	envidata: spatial data returned from raster_functions.load_dem() 
+				- if all zeros then it is assumed that the data is a non-georeferenced image in which case the output of this is just an image file 
+				- pass the envidata if youw ant a geospatial output
 	'''	
 	startTime = time.time()
 
@@ -143,11 +148,18 @@ def find_spacings(image_array, date, kernel_size, stepsize, envidata, post, outp
 
  	# <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 	# <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< PROBLEM inside plot function if envidata==False such as using sine_wave_TEST.py (see plots.py)	
-	plots.plot_image(space, 'Spacing (m)', img_prefix + '_spacing_m', envidata, new_post, remove_empty_cols=1)
-	plots.plot_image(orientation, 'Orientation (degN.)', img_prefix + '_orientation', envidata, new_post, remove_empty_cols=1)
-	plots.plot_image(SnR_imgout, 'Signal-to-noise (%s)' % date, img_prefix + '_snr', envidata, new_post, remove_empty_cols=1)
-	plots.plot_image(orig, 'Original input image (%s)' % date, img_prefix + '_original', envidata, new_post, remove_empty_cols=1)
+	plots.plot_image(space, 'Spacing (m)', img_prefix + '_spacing_m', envidata, new_post, remove_empty_cols=0)
+	plots.plot_image(orientation, 'Orientation (degN.)', img_prefix + '_orientation', envidata, new_post, remove_empty_cols=0)
+	plots.plot_image(SnR_imgout, 'Signal-to-noise (%s)' % date, img_prefix + '_snr', envidata, new_post, remove_empty_cols=0)
+	plots.plot_image(orig, 'Original input image (%s)' % date, img_prefix + '_original', envidata, new_post, remove_empty_cols=0)
 
+	## Removal of empty columns is causing mismatches when writing out - dont do it!
+	#	plots.plot_image(space, 'Spacing (m)', img_prefix + '_spacing_m', envidata, new_post, remove_empty_cols=1)
+	#	plots.plot_image(orientation, 'Orientation (degN.)', img_prefix + '_orientation', envidata, new_post, remove_empty_cols=1)
+	#	plots.plot_image(SnR_imgout, 'Signal-to-noise (%s)' % date, img_prefix + '_snr', envidata, new_post, remove_empty_cols=1)
+	#	plots.plot_image(orig, 'Original input image (%s)' % date, img_prefix + '_original', envidata, new_post, remove_empty_cols=1)
+
+	
 	
 	## The following two lines can lead to unexpected behaviour and uneven dimensions of the 2 arrays so are best avoided
 	#spacing_no_zeros = util.trim_constant_rows_cols(space)
