@@ -148,12 +148,15 @@ def find_spacings(image_array, date, kernel_size, stepsize, envidata, post, outp
 	plots.plot_image(SnR_imgout, 'Signal-to-noise (%s)' % date, img_prefix + '_snr', envidata, new_post, remove_empty_cols=1)
 	plots.plot_image(orig, 'Original input image (%s)' % date, img_prefix + '_original', envidata, new_post, remove_empty_cols=1)
 
-	spacing_no_zeros = util.trim_constant_rows_cols(space)
-	orientation_no_zeros = util.trim_constant_rows_cols(orientation)
+	
+	## The following two lines can lead to unexpected behaviour and uneven dimensions of the 2 arrays so are best avoided
+	#spacing_no_zeros = util.trim_constant_rows_cols(space)
+	#orientation_no_zeros = util.trim_constant_rows_cols(orientation)
+	#FT_spacing_orientation_stats.write_stats(output_dir + '/spacing_stats.txt', spacing_no_zeros, date, kernel_size, stepsize)
+	#FT_spacing_orientation_stats.write_stats(output_dir + '/orientation_stats.txt', orientation_no_zeros, date, kernel_size, stepsize)
 
-
-	FT_spacing_orientation_stats.write_stats(output_dir + '/spacing_stats.txt', spacing_no_zeros, date, kernel_size, stepsize)
-	FT_spacing_orientation_stats.write_stats(output_dir + '/orientation_stats.txt', orientation_no_zeros, date, kernel_size, stepsize)
+	FT_spacing_orientation_stats.write_stats(output_dir + '/spacing_stats.txt', space, date, kernel_size, stepsize)
+	FT_spacing_orientation_stats.write_stats(output_dir + '/orientation_stats.txt', orientation, date, kernel_size, stepsize)
 
 	## CREATE QUIVER PLOT
 
