@@ -39,7 +39,15 @@ def write_list_to_file(guest_list, filename):
 
 #def window_estimator(path, opath, input_image, label):
 def window_estimator(path, opath, input_image, plotting=False, plotting_binary=0):
+	"""
+	
+	Example run:
+	path = "N:/Github/BGS/bgs_projects/bgs__crevasse_risk_mapping/mars/"
+	opath = 'C:/Users/chrwil/Desktop/mars/mars_dune_ORIENTATION_SPACING/'
+	input_image = "%s/mars_dune_image.png" %(path)
+	kernel_dimension_estimator.window_estimator(path, opath, input_image)
 
+	"""
 	#	path = 'C:/Users/chrwil/Desktop/Hofsjokull_data/hofsjokull-2008-cmb-v1'
 	#	opath= 'C:/Users/chrwil/Desktop/Hofsjokull_data/outputs_5m'
 	#	input_image = "%s/hofsjokull_FLAT_5m_SUBSET.tif" %(path)

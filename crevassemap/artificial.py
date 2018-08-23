@@ -52,13 +52,18 @@ def sawtooth_wave(size, angle, wavelength):
 
 def white_noise(size):
     """
+    Creates an array of randomised white noise: spectral density (beta) = 0 (flat) (https://en.wikipedia.org/wiki/Colors_of_noise)
+    White noise is flat (β = 0)
     size: this is the size of the array in pixels e.g. a value of 10 will provide a 10x10 array
     """
     return np.random.randn(size, size)
 
 def coloured_noise(size, n):
     """
+    Creates an array of randomised noise with a user defined spectral density (n) -- https://en.wikipedia.org/wiki/Colors_of_noise
+
     size: this is the size of the array in pixels e.g. a value of 10 will provide a 10x10 array
+    n: scale of noise...
     """
     white = white_noise(size)
     fft = np.fft.fft2(white)
@@ -74,12 +79,16 @@ def coloured_noise(size, n):
 
 def brown_noise(size):
     """
+    Creates an array of randomised brown noise: spectral density (beta) = 2 (https://en.wikipedia.org/wiki/Colors_of_noise)
+    Brownian noise has β = 2 
     size: this is the size of the array in pixels e.g. a value of 10 will provide a 10x10 array
     """
     return coloured_noise(size, 2)
 
 def pink_noise(size):
     """
+    Creates an array of randomised pink noise: spectral density (beta) = 1 (https://en.wikipedia.org/wiki/Colors_of_noise)
+    Pink noise has β = 1
     size: this is the size of the array in pixels e.g. a value of 10 will provide a 10x10 array
     """
     return coloured_noise(size, 1)
