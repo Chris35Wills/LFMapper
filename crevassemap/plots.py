@@ -32,6 +32,10 @@ def plot_image(img, title, filename, envidata, post, remove_empty_cols=0):
 	#print("Inside plot image...")
 	#print(img.shape)	
 	
+
+	# This next bit if enabled has a habit of screwing everything up so best to avoid 
+	#	- it isn'nt that controlled in terms of removal and means output array differs 
+	#		to input which causes geotransfrom related issues....
 	if remove_empty_cols == 1:
 		img = util.trim_constant_rows_cols(img) 
 
@@ -48,16 +52,23 @@ def plot_image(img, title, filename, envidata, post, remove_empty_cols=0):
 	plt.clf()
 	
 
+	
 	## put into new function.... <<<<<<<<<<<<<<<<<<<<<<<<<<<
-	if envidata != False:
-		print("Geospatial data provided :)")
-		raster_functions.ENVI_raster_binary_from_2d_array(envidata, filename + '.bin', post, img)
-	# <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
-	# <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< PROBLEM WITH THIS CATCH STILL - ARRAYS DEVELOPING ZERO AXIS....
-	else:
-		print("No geospatial data provided - saving as txt file.")
-		ofile="%s.png" %filename
-		save_array_as_image(img, ofile)
+	#if envidata != False:
+	print("Geospatial data provided :)")
+	raster_functions.ENVI_raster_binary_from_2d_array(envidata, filename + '.bin', post, img)
+	
+	#	if envidata == False:
+	#		print("Now for something completely different...")
+	#		ofile="%s.png" %filename
+	#		save_array_as_image(img, ofile)
+
+	#	# <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+	#	# <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< PROBLEM WITH THIS CATCH STILL - ARRAYS DEVELOPING ZERO AXIS....
+	#	else:
+	#		print("No geospatial data provided - saving as txt file.")
+	#		ofile="%s.png" %filename
+	#		save_array_as_image(img, ofile)
 	
 
 
