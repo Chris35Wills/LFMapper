@@ -19,14 +19,22 @@ def check_odd_kernel(val):
 
 ### DATA SPEC
 non_envi_file_name = 'tests/TEST_DATA/zebra.jpg'
+
 output_dir = 'tests/test_output'
+
 non_envi_cols = 518
 non_envi_rows = 386
 non_envi_post = 1		
 
 ### MAIN RUN
-step_range = ([51])
-kernel_range = ([9])
+step_range = ([1,3,5,7]) 
+kernel_range = ([3])
+
+	# NOTE THAT A STEPSIZE OF 1 (i.e. every cell) will leave a gap at the bottom and right margins - this is 
+	# due to the effect of stepping into the image (by half the kernel - 1) to ensure all cells within the kernel 
+	# are within the iamge. When it reaches the bottom corner, cells where the kernel is focused but where part of 
+	# the kernel falls outside of the image are given NA values
+
 
 check_odd_kernel(kernel_range[0])
 check_odd_step(step_range[0])
