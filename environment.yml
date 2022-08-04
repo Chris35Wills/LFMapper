@@ -12,24 +12,20 @@ dependencies:
   - expat=2.2.5=vc9_0
   - freexl=1.0.5=vc9_0
   - functools32=3.2.3.2=py_3
-  - futures=3.2.0=py27_0
+  - georaster=1.27=pyh9f0ad1d_0
   - hdf4=4.2.13=vc9_0
   - hdf5=1.10.2=vc9_0
   - icu=58.2=vc9_0
-  - kiwisolver=1.0.1=py27_1
   - libpng=1.6.34=vc9_0
   - openjpeg=2.3.0=vc9_2
   - openssl=1.0.2o=vc9_0
   - pip=20.1.1=pyh9f0ad1d_0
   - pyparsing=2.4.7=pyh9f0ad1d_0
-  - pyqt=5.6.0=py27_5
   - python-dateutil=2.8.1=py_0
   - pytz=2020.1=pyh9f0ad1d_0
   - singledispatch=3.6.1=pyh44b312d_0
-  - sip=4.18=py27_1
   - six=1.16.0=pyh6c4a22f_0
   - tk=8.6.8=vc9_0
-  - tornado=5.0.2=py27_0
   - vs2008_runtime=9.0.30729.6161=0
   - wheel=0.37.1=pyhd8ed1ab_0
   - xerces-c=3.2.1=vc9_0
@@ -38,12 +34,14 @@ dependencies:
   - certifi=2020.6.20=pyhd3eb1b0_3
   - curl=7.64.0=h7a46e7a_2
   - freetype=2.9.1=h4d385ea_1
+  - futures=3.3.0=py27_0
   - gdal=2.2.4=py27h39f3610_3
   - geos=3.6.2=h3394e7e_2
   - icc_rt=2019.0.0=h0cc432a_1
   - intel-openmp=2022.0.0=h9f7ea03_3663
   - jpeg=9b=hb117b5b_2
   - kealib=1.4.7=hbe19aa3_6
+  - kiwisolver=1.1.0=py27hc56fc5f_0
   - krb5=1.16.1=hb4d044e_6
   - libboost=1.67.0=hab8cdc6_4
   - libcurl=7.64.0=h7a46e7a_2
@@ -64,11 +62,17 @@ dependencies:
   - numpy-base=1.16.6=py27hb1d0314_0
   - pcre=8.43=hc56fc5f_0
   - proj4=5.1.0=h0c8e037_1
+  - pyproj=1.9.5.1=py27h524b6af_1
+  - pyqt=5.6.0=py27hc56fc5f_6
   - python=2.7.18=hfb89ab9_0
   - qt=5.6.2=vc9he136c73_12
   - scipy=1.2.1=py27h4c3ab11_0
   - setuptools=44.0.0=py27_0
+  - sip=4.18.1=py27hc56fc5f_2
   - sqlite=3.30.1=h0c8e037_0
+  - tornado=5.1.1=py27h0c8e037_0
   - vc=9=h7299396_1
   - wincertstore=0.2=py27h87a2792_0
   - xz=5.2.4=h3cc03e0_4
+prefix: C:\Users\chrwil\AppData\Local\conda\conda\envs\LFMapper_27
+
