@@ -10,8 +10,8 @@
 
 3. Run one of the driver scripts (for either [ENVI](./EXAMPLE_ENVI.py) and [JPG](./EXAMPLE_JPG.py) file types\*\*) - these are basic examples of how to calculate spacing and orientation of images using various step and kernel sizes - the outputs will be available in tests/test_output on your machine, in a folder with either ENVI or JPG along with ENVI or JPG in the name. Call the scripts from the top directory using:
 
-		python EXAMPLE_ENVI.py
-		python EXAMPLE_JPG.py
+	python EXAMPLE_ENVI.py
+	python EXAMPLE_JPG.py
 
 4. For more info on exactly how the program works, keep reading...
 
@@ -66,14 +66,14 @@ New grids are then populated by these spacing and orientation values, each pixel
 
 ## User settings
 
-The program relies on the user setting specific variables. 
+* The program relies on the user setting specific variables. 
 
-The **window size** (defined by the variable *kernel_range* and which can be a list of values which the programme will then iterate through)
-must be odd (you'll be told if this is not the case) - the values to use for this are important and must ultimately define a window size that will be large enough to capture repeated instances of wavelengths which you are interested in - for example, for an image where you know there is a dominant wavelength of 2 m, go for a window size that is about 11 x 11 m as this will allow for the identification of a strong peak due to ~5 repeats of the signal within the window's extent. This is discussed in more detail below. 
+* The **window size** (defined by the variable *kernel_range* and which can be a list of values which the programme will then iterate through)
+must be odd (you'll be told if this is not the case) - the values to use for this are important and must ultimately define a window size that will be large enough to capture repeated instances of wavelengths which you are interested in - for example, for an image where you know there is a dominant wavelength of 2 m, go for a window size that is about 11 x 11 m as this will allow for the identification of a strong peak due to \~5 repeats of the signal within the window's extent. This is discussed in more detail below. 
 
-The **step size** (defined by the variable *step_range* and which can be a list of values which the programme will then iterate through) sub-sample the image. A step size of 1 will result in a sub-image of dimensions set by *kernel_range* every pixel (this will take a while) - the larger the step size, the faster the run but the less detailed the result. The *best* step size is based on the distance over which a signal likely dominates. If you know one signal dominates the whole image, then a large step size will be adequate. Analysis of an image with varying linear features across it will benefit from a program run using a smaller step size. It is best to supply the program with a range of step sizes as you can then consider the results from each run separately.
+* The **step size** (defined by the variable *step_range* and which can be a list of values which the programme will then iterate through) sub-sample the image. A step size of 1 will result in a sub-image of dimensions set by *kernel_range* every pixel (this will take a while) - the larger the step size, the faster the run but the less detailed the result. The *best* step size is based on the distance over which a signal likely dominates. If you know one signal dominates the whole image, then a large step size will be adequate. Analysis of an image with varying linear features across it will benefit from a program run using a smaller step size. It is best to supply the program with a range of step sizes as you can then consider the results from each run separately.
 
-Depending on your image type, you may or may not want to **remove noise**. The type of noise to remove from an image can be set by defining the *spectrum_n* variable in the driver scripts. This value represents a power law (e.g. a value of 2 is representative of brown noise) which will be used to flatten the frequency spectrum. For more info on noise, see [here](https://en.wikipedia.org/wiki/Colors_of_noise).
+* Depending on your image type, you may or may not want to **remove noise**. The type of noise to remove from an image can be set by defining the *spectrum_n* variable in the driver scripts. This value represents a power law (e.g. a value of 2 is representative of brown noise) which will be used to flatten the frequency spectrum. For more info on noise, see [here](https://en.wikipedia.org/wiki/Colors_of_noise).
 
 ### Finding the right window size
 
@@ -107,36 +107,34 @@ To get an idea of how the program works, data is available for both example scri
 
 A full program run will result in the following (NB/ all files have an associated time stamp):
 
-Plots (png) of:
+* Plots (png) of:
+	- original image (adjusted to user-set dimensions of step size)
+	- orientation  (degrees North)
+	- spacing  (units of original image)
+	- quiver plot (spacing with orientation superimposed)
+	- Signal-to-noise ratio
 
-- original image (adjusted to user-set dimensions of step size)
-- orientation  (degrees North)
-- spacing  (units of original image)
-- quiver plot (spacing with orientation superimposed)
-- Signal-to-noise ratio
+* Rasters of:
+	- original image (adjusted to user-set dimensions of step size)
+	- orientation  (degrees North)
+	- spacing  (units of original image)
+	- Signal-to-noise ratio
 
-Rasters* of:
+*NB/ ENVI format with a header file detailing geospatial extent (if data provided with initial image as with an ENVI .bin/.hdr pair)*
 
-- original image (adjusted to user-set dimensions of step size)
-- orientation  (degrees North)
-- spacing  (units of original image)
-- Signal-to-noise ratio
-
-*ENVI format with a header file detailing geospatial extent (if data provided with initial image as with an ENVI .bin/.hdr pair)
-
-Log files:
-
-- details of the settings of a given program run as defined in the driver script
+* Log files:
+	- details of the settings of a given program run as defined in the driver script
 
 ## Testing
 
-A suite of [nosetests](http://nose.readthedocs.io/en/latest/) compatible tests are available to ensure that the program compiles and works with ENVI (.bin and .hdr file pairs) and .jpg images, as well as tests for functions that are used throughout the program. These are available at [tests/tests.py](./tests/tests.py) and can be run from the top directory of the program by typing `nosetests`.
-
-If you do not have X11() forwarding set for your environment, you will receive a non-fatal error warning you that interactive plots won't work - everything else will.
+* A suite of [nosetests](http://nose.readthedocs.io/en/latest/) compatible tests are available to ensure that the program compiles and works with ENVI (.bin and .hdr file pairs) and .jpg images, as well as tests for functions that are used throughout the program. These are available at [tests/tests.py](./tests/tests.py) and can be run from the top directory of the program by typing `nosetests`.
+* If you do not have X11() forwarding set for your environment, you will receive a non-fatal error warning you that interactive plots won't work - everything else will.
 
 ## Dependencies and other details
 
-The following packages are required on your machine:
+An Anaconda environment file is provided to streamline environment setup [here](environment.yml): [environment.yml](environment.yml)
+
+The following packages are required:
 
 - [numpy](http://www.numpy.org/)
 - [matplotlib](http://matplotlib.org/)
@@ -162,3 +160,7 @@ A common issue that is arising with OS X is a problem with [osgeo](https://pypi.
 	conda install krb5
 	
 and then re-run the tests using `nosetests` from the top directory. If you have more problems, please log an issue - OS X issues will be resolved in the near future. Feel free to pull request if you have solutions.
+
+## Further work/nice to haves
+
+* Raster handling to be improved
